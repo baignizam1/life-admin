@@ -46,7 +46,6 @@
         const RefreshCw = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>);
         const Tv = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>);
         const Home = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>);
-        const Filter = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>);
 
         const INITIAL_EVENTS = [
           { id: 1, title: 'Sleigh Ride at Lowes', startTime: '2025-12-20T11:00:00', endTime: '2025-12-20T12:00:00', location: "LOWE'S OF NORTHBROOK, 1000 WILLOW ROAD, NORTHBROOK, IL 60062", description: '2 mini builders', category: 'family', attendees: ['Family'] },
@@ -55,21 +54,69 @@
           { id: 4, title: 'Pre-op appointment with Dr Seyfert', startTime: '2025-12-02T15:30:00', endTime: '2025-12-02T16:30:00', location: '1329 Wolf Road, MOUNT PROSPECT, IL 60056', category: 'personal', attendees: ['Nizam'] }
         ];
 
-        // MASSIVE SHOW DATABASE with categories
+        // MASSIVE SHOW DATABASE with categories + CLASSIC SHOWS
         const ALL_SHOWS = [
+          // CLASSIC SHOWS (Better pacing, real development)
+          { name: 'Hey Arnold', platform: 'Paramount+', category: 'Classic', age: '7+', teaches: 'Urban life, empathy, complex characters' },
+          { name: 'Arthur', platform: 'PBS Kids', category: 'Classic', age: '5+', teaches: 'Social situations, family dynamics' },
+          { name: 'Doug', platform: 'Disney+', category: 'Classic', age: '7+', teaches: 'Imagination, problem-solving' },
+          { name: 'Rugrats', platform: 'Paramount+', category: 'Classic', age: '5+', teaches: 'Imagination, friendship' },
+          { name: 'Recess', platform: 'Disney+', category: 'Classic', age: '7+', teaches: 'Friendship, playground dynamics' },
+          { name: 'The Weekenders', platform: 'Disney+', category: 'Classic', age: '7+', teaches: 'Friendship, teenage life' },
+          { name: "Pepper Ann", platform: 'Disney+', category: 'Classic', age: '7+', teaches: 'Middle school challenges' },
+          { name: 'As Told By Ginger', platform: 'Paramount+', category: 'Classic', age: '8+', teaches: 'Growing up, friendships' },
+          { name: 'The Wild Thornberrys', platform: 'Paramount+', category: 'Classic', age: '7+', teaches: 'Nature, conservation' },
+          { name: 'Rocket Power', platform: 'Paramount+', category: 'Classic', age: '7+', teaches: 'Sports, friendship' },
+          { name: 'CatDog', platform: 'Paramount+', category: 'Classic', age: '7+', teaches: 'Opposites, cooperation' },
+          { name: 'The Angry Beavers', platform: 'Paramount+', category: 'Classic', age: '7+', teaches: 'Sibling relationships' },
+          { name: 'Kablam!', platform: 'Paramount+', category: 'Classic', age: '7+', teaches: 'Creativity, variety' },
+          { name: 'The Adventures of Pete & Pete', platform: 'Paramount+', category: 'Classic', age: '8+', teaches: 'Suburban childhood, quirky humor' },
+          { name: 'Rocko\'s Modern Life', platform: 'Paramount+', category: 'Classic', age: '8+', teaches: 'Adult life satire (for older kids)' },
+          { name: 'Aaahh!!! Real Monsters', platform: 'Paramount+', category: 'Classic', age: '7+', teaches: 'Friendship, being different' },
+          { name: 'Kenan & Kel', platform: 'Paramount+', category: 'Classic', age: '8+', teaches: 'Friendship, comedy' },
+          { name: 'All That', platform: 'Paramount+', category: 'Classic', age: '8+', teaches: 'Sketch comedy' },
+          { name: 'Legends of the Hidden Temple', platform: 'Paramount+', category: 'Classic', age: '7+', teaches: 'History, teamwork' },
+          { name: 'Figure It Out', platform: 'Paramount+', category: 'Classic', age: '7+', teaches: 'Deduction, talents' },
+          { name: 'Gullah Gullah Island', platform: 'Paramount+', category: 'Classic', age: '3+', teaches: 'Culture, music, family' },
+          { name: 'Little Bear', platform: 'Paramount+', category: 'Classic', age: '3+', teaches: 'Imagination, nature' },
+          { name: 'Franklin', platform: 'Paramount+', category: 'Classic', age: '3+', teaches: 'Growing up, emotions' },
+          { name: 'Max and Ruby', platform: 'Paramount+', category: 'Classic', age: '3+', teaches: 'Sibling relationships' },
+          { name: 'Blue\'s Clues (Original)', platform: 'Paramount+', category: 'Classic', age: '3+', teaches: 'Problem-solving, direct address' },
+          { name: 'The Magic School Bus (Original)', platform: 'Netflix', category: 'Classic', age: '5+', teaches: 'Science exploration' },
+          { name: 'Wishbone', platform: 'Prime', category: 'Classic', age: '7+', teaches: 'Classic literature' },
+          { name: 'Reading Rainbow', platform: 'YouTube', category: 'Classic', age: '5+', teaches: 'Love of reading' },
+          { name: 'Bill Nye the Science Guy', platform: 'Disney+', category: 'Classic', age: '7+', teaches: 'Science concepts' },
+          { name: 'Zoboomafoo', platform: 'PBS Kids', category: 'Classic', age: '5+', teaches: 'Animals, nature' },
+          { name: 'Between the Lions', platform: 'PBS Kids', category: 'Classic', age: '3+', teaches: 'Reading fundamentals' },
+          { name: 'Cyberchase (Classic)', platform: 'PBS Kids', category: 'Classic', age: '7+', teaches: 'Math adventures' },
+          { name: 'Avatar: The Last Airbender', platform: 'Netflix', category: 'Classic', age: '7+', teaches: 'Character growth, balance, war/peace' },
+          { name: 'Kim Possible', platform: 'Disney+', category: 'Classic', age: '7+', teaches: 'Girl power, balance' },
+          { name: 'Danny Phantom', platform: 'Paramount+', category: 'Classic', age: '7+', teaches: 'Identity, responsibility' },
+          { name: 'The Fairly OddParents', platform: 'Paramount+', category: 'Classic', age: '7+', teaches: 'Consequences, wishes' },
+          { name: 'Jimmy Neutron', platform: 'Paramount+', category: 'Classic', age: '7+', teaches: 'Science, friendship' },
+          { name: 'SpongeBob (Early Seasons)', platform: 'Paramount+', category: 'Classic', age: '7+', teaches: 'Optimism, friendship' },
+          { name: 'Foster\'s Home', platform: 'HBO Max', category: 'Classic', age: '7+', teaches: 'Imagination, diversity' },
+          { name: 'Codename: Kids Next Door', platform: 'HBO Max', category: 'Classic', age: '7+', teaches: 'Teamwork, creativity' },
+          { name: 'Ed, Edd n Eddy', platform: 'HBO Max', category: 'Classic', age: '7+', teaches: 'Friendship, schemes' },
+          { name: 'Courage the Cowardly Dog', platform: 'HBO Max', category: 'Classic', age: '8+', teaches: 'Facing fears' },
+          { name: 'Dexter\'s Laboratory', platform: 'HBO Max', category: 'Classic', age: '7+', teaches: 'Science, sibling rivalry' },
+          { name: 'The Powerpuff Girls (Original)', platform: 'HBO Max', category: 'Classic', age: '7+', teaches: 'Girl power, teamwork' },
+          { name: 'Johnny Bravo', platform: 'HBO Max', category: 'Classic', age: '8+', teaches: 'Satire, humor' },
+          { name: 'Samurai Jack', platform: 'HBO Max', category: 'Classic', age: '8+', teaches: 'Honor, perseverance' },
+
           // SCIENCE & NATURE
-          { name: 'Wild Kratts', platform: 'PBS Kids/Prime', category: 'Science', age: '5+', teaches: 'Zoology, animal behavior' },
+          { name: 'Wild Kratts', platform: 'PBS Kids', category: 'Science', age: '5+', teaches: 'Zoology, animal behavior' },
           { name: 'Octonauts', platform: 'Netflix', category: 'Science', age: '3+', teaches: 'Marine biology, teamwork' },
-          { name: 'The Magic School Bus', platform: 'Netflix', category: 'Science', age: '5+', teaches: 'General science concepts' },
+          { name: 'The Magic School Bus Rides Again', platform: 'Netflix', category: 'Science', age: '5+', teaches: 'General science concepts' },
           { name: 'Sid the Science Kid', platform: 'PBS Kids', category: 'Science', age: '3+', teaches: 'Scientific inquiry' },
           { name: 'Ready Jet Go!', platform: 'PBS Kids', category: 'Science', age: '5+', teaches: 'Space, astronomy' },
-          { name: 'Dinosaur Train', platform: 'PBS Kids/Prime', category: 'Science', age: '3+', teaches: 'Paleontology, science' },
+          { name: 'Dinosaur Train', platform: 'PBS Kids', category: 'Science', age: '3+', teaches: 'Paleontology, science' },
           { name: 'Nature Cat', platform: 'PBS Kids', category: 'Science', age: '5+', teaches: 'Nature, outdoor science' },
           { name: 'Elinor Wonders Why', platform: 'PBS Kids', category: 'Science', age: '3+', teaches: 'Scientific method' },
-          { name: 'Curious George', platform: 'PBS Kids/Prime', category: 'Science', age: '3+', teaches: 'Science, curiosity' },
-          { name: 'Planet Earth', platform: 'Netflix/BBC', category: 'Science', age: '5+', teaches: 'Nature, wildlife' },
+          { name: 'Curious George', platform: 'PBS Kids', category: 'Science', age: '3+', teaches: 'Science, curiosity' },
+          { name: 'Planet Earth', platform: 'Netflix', category: 'Science', age: '5+', teaches: 'Nature, wildlife' },
           { name: 'Our Planet', platform: 'Netflix', category: 'Science', age: '5+', teaches: 'Nature, conservation' },
-          { name: 'Blue Planet', platform: 'Netflix/BBC', category: 'Science', age: '5+', teaches: 'Ocean life' },
+          { name: 'Blue Planet', platform: 'Netflix', category: 'Science', age: '5+', teaches: 'Ocean life' },
           { name: 'Storybots', platform: 'Netflix', category: 'Science', age: '3+', teaches: 'General knowledge' },
           { name: 'Ask the Storybots', platform: 'Netflix', category: 'Science', age: '3+', teaches: 'Answering questions' },
           { name: 'Tumble Leaf', platform: 'Prime', category: 'Science', age: '3+', teaches: 'Science exploration' },
@@ -81,26 +128,25 @@
 
           // MATH & LOGIC
           { name: 'Odd Squad', platform: 'PBS Kids', category: 'Math', age: '5+', teaches: 'Math problem-solving' },
-          { name: 'Peg + Cat', platform: 'PBS Kids/Prime', category: 'Math', age: '3+', teaches: 'Math concepts' },
-          { name: 'Cyberchase', platform: 'PBS Kids/Prime', category: 'Math', age: '7+', teaches: 'Math adventures' },
+          { name: 'Peg + Cat', platform: 'PBS Kids', category: 'Math', age: '3+', teaches: 'Math concepts' },
+          { name: 'Cyberchase', platform: 'PBS Kids', category: 'Math', age: '7+', teaches: 'Math adventures' },
           { name: 'Team Umizoomi', platform: 'Paramount+', category: 'Math', age: '3+', teaches: 'Math concepts' },
-          { name: 'Numberblocks', platform: 'YouTube/Netflix', category: 'Math', age: '3+', teaches: 'Numbers & counting' },
+          { name: 'Numberblocks', platform: 'Netflix', category: 'Math', age: '3+', teaches: 'Numbers & counting' },
           { name: 'Blaze', platform: 'Paramount+', category: 'Math', age: '3+', teaches: 'STEM concepts' },
 
           // READING & LANGUAGE
-          { name: 'Super Why', platform: 'PBS Kids/Prime', category: 'Reading', age: '3+', teaches: 'Reading skills' },
+          { name: 'Super Why', platform: 'PBS Kids', category: 'Reading', age: '3+', teaches: 'Reading skills' },
           { name: 'WordGirl', platform: 'PBS Kids', category: 'Reading', age: '5+', teaches: 'Vocabulary' },
           { name: 'Martha Speaks', platform: 'PBS Kids', category: 'Reading', age: '5+', teaches: 'Vocabulary' },
-          { name: 'Alphablocks', platform: 'YouTube/Netflix', category: 'Reading', age: '3+', teaches: 'Phonics' },
-          { name: 'Between the Lions', platform: 'PBS Kids', category: 'Reading', age: '3+', teaches: 'Reading fundamentals' },
+          { name: 'Alphablocks', platform: 'Netflix', category: 'Reading', age: '3+', teaches: 'Phonics' },
           { name: 'Word Party', platform: 'Netflix', category: 'Reading', age: '2+', teaches: 'Vocabulary' },
           { name: 'Rhyme Time Town', platform: 'Netflix', category: 'Reading', age: '2+', teaches: 'Language & phonics' },
 
           // SOCIAL-EMOTIONAL LEARNING
-          { name: 'Daniel Tiger', platform: 'PBS Kids/Prime', category: 'Social', age: '2+', teaches: 'Emotions, social skills' },
+          { name: 'Daniel Tiger', platform: 'PBS Kids', category: 'Social', age: '2+', teaches: 'Emotions, social skills' },
           { name: 'Stillwater', platform: 'Apple TV+', category: 'Social', age: '5+', teaches: 'Mindfulness, wisdom' },
           { name: 'Hello, Jack!', platform: 'Apple TV+', category: 'Social', age: '3+', teaches: 'Kindness' },
-          { name: 'Mister Rogers', platform: 'PBS Kids/Prime', category: 'Social', age: '3+', teaches: 'Feelings, kindness' },
+          { name: 'Mister Rogers', platform: 'PBS Kids', category: 'Social', age: '3+', teaches: 'Feelings, kindness' },
           { name: 'Sesame Street', platform: 'HBO Max', category: 'Social', age: '2+', teaches: 'Social skills, diversity' },
           { name: 'Bluey', platform: 'Disney+', category: 'Social', age: '3+', teaches: 'Family, imagination' },
           { name: 'Doc McStuffins', platform: 'Disney+', category: 'Social', age: '3+', teaches: 'Empathy, helping' },
@@ -117,14 +163,14 @@
 
           // HISTORY & GEOGRAPHY
           { name: 'Molly of Denali', platform: 'PBS Kids', category: 'Geography', age: '5+', teaches: 'Alaska culture' },
-          { name: "Let's Go Luna", platform: 'PBS Kids/Prime', category: 'Geography', age: '5+', teaches: 'World cultures' },
+          { name: "Let's Go Luna", platform: 'PBS Kids', category: 'Geography', age: '5+', teaches: 'World cultures' },
           { name: 'Carmen Sandiego', platform: 'Netflix', category: 'Geography', age: '7+', teaches: 'Geography, mystery' },
           { name: "Where's Waldo", platform: 'Peacock', category: 'Geography', age: '5+', teaches: 'Geography, problem-solving' },
           { name: 'Liberty Kids', platform: 'YouTube', category: 'History', age: '7+', teaches: 'American history' },
 
           // ARTS & CREATIVITY
           { name: 'Creative Galaxy', platform: 'Prime', category: 'Arts', age: '3+', teaches: 'Art & creativity' },
-          { name: 'Pinkalicious', platform: 'PBS Kids/Prime', category: 'Arts', age: '3+', teaches: 'Creativity, art' },
+          { name: 'Pinkalicious', platform: 'PBS Kids', category: 'Arts', age: '3+', teaches: 'Creativity, art' },
           { name: 'Fancy Nancy', platform: 'Disney+', category: 'Arts', age: '3+', teaches: 'Vocabulary, creativity' },
           { name: 'Muppet Babies', platform: 'Disney+', category: 'Arts', age: '3+', teaches: 'Imagination' },
           { name: 'Pete the Cat', platform: 'Prime', category: 'Arts', age: '3+', teaches: 'Music, positivity' },
@@ -137,15 +183,14 @@
           { name: 'Eva the Owlet', platform: 'Apple TV+', category: 'Problem Solving', age: '3+', teaches: 'Nighttime adventures' },
           { name: 'Sago Mini Friends', platform: 'Apple TV+', category: 'Problem Solving', age: '2+', teaches: 'Friendship' },
           { name: 'Shape Island', platform: 'Apple TV+', category: 'Problem Solving', age: '3+', teaches: 'Shapes, friendship' },
-          { name: 'Clifford', platform: 'PBS Kids/Prime', category: 'Problem Solving', age: '3+', teaches: 'Kindness, size concepts' },
-          { name: 'Arthur', platform: 'PBS Kids/Prime', category: 'Problem Solving', age: '5+', teaches: 'Social situations' },
+          { name: 'Clifford', platform: 'PBS Kids', category: 'Problem Solving', age: '3+', teaches: 'Kindness, size concepts' },
           { name: 'Lyla in the Loop', platform: 'PBS Kids', category: 'Problem Solving', age: '5+', teaches: 'Critical thinking' },
           { name: 'Clue', platform: 'Peacock', category: 'Problem Solving', age: '7+', teaches: 'Mystery, deduction' },
           { name: 'Ghostwriter', platform: 'Apple TV+', category: 'Problem Solving', age: '7+', teaches: 'Mystery, reading' },
 
-          // ADVENTURE & IMAGINATION (Quality, not hyperactive)
+          // ADVENTURE & IMAGINATION
           { name: 'Pinecone & Pony', platform: 'Apple TV+', category: 'Adventure', age: '3+', teaches: 'Fantasy, friendship' },
-          { name: 'Puffin Rock', platform: 'Netflix/Apple TV+', category: 'Adventure', age: '3+', teaches: 'Nature, exploration' },
+          { name: 'Puffin Rock', platform: 'Apple TV+', category: 'Adventure', age: '3+', teaches: 'Nature, exploration' },
           { name: 'Trash Truck', platform: 'Netflix', category: 'Adventure', age: '3+', teaches: 'Friendship' },
           { name: 'True & Rainbow Kingdom', platform: 'Netflix', category: 'Adventure', age: '3+', teaches: 'Problem-solving' },
           { name: 'Wolfboy', platform: 'Apple TV+', category: 'Adventure', age: '7+', teaches: 'Creativity, imagination' },
@@ -162,11 +207,10 @@
           { name: 'Harriet the Spy', platform: 'Apple TV+', category: 'Adventure', age: '7+', teaches: 'Observation, writing' },
           { name: 'Surfside Girls', platform: 'Apple TV+', category: 'Adventure', age: '7+', teaches: 'Mystery, friendship' },
 
-          // LIFE SKILLS & DAILY ROUTINES
-          { name: 'Caillou', platform: 'YouTube', category: 'Life Skills', age: '2+', teaches: 'Daily routines' },
+          // LIFE SKILLS
           { name: 'Peppa Pig', platform: 'Paramount+', category: 'Life Skills', age: '2+', teaches: 'Family life' },
           { name: 'Bubble Guppies', platform: 'Paramount+', category: 'Life Skills', age: '3+', teaches: 'Various topics' },
-          { name: "Blue's Clues", platform: 'Paramount+', category: 'Life Skills', age: '3+', teaches: 'Problem-solving' },
+          { name: "Blue's Clues & You", platform: 'Paramount+', category: 'Life Skills', age: '3+', teaches: 'Problem-solving' },
           { name: 'Dora', platform: 'Paramount+', category: 'Life Skills', age: '3+', teaches: 'Spanish, problem-solving' },
           { name: 'Mickey Clubhouse', platform: 'Disney+', category: 'Life Skills', age: '2+', teaches: 'Problem-solving' },
           { name: 'Mickey Funhouse', platform: 'Disney+', category: 'Life Skills', age: '3+', teaches: 'Problem-solving' },
@@ -174,10 +218,9 @@
           { name: 'Super Monsters', platform: 'Netflix', category: 'Life Skills', age: '3+', teaches: 'Preschool social skills' },
           { name: 'Wonder Pets', platform: 'Paramount+', category: 'Life Skills', age: '3+', teaches: 'Teamwork, helping' },
 
-          // SPECIAL INTEREST (Animals, Vehicles, etc)
-          { name: 'Blippi', platform: 'YouTube/Prime', category: 'Special Interest', age: '3+', teaches: 'Learning through play' },
+          // SPECIAL INTEREST
+          { name: 'Blippi', platform: 'YouTube', category: 'Special Interest', age: '3+', teaches: 'Learning through play' },
           { name: 'Go! Go! Cory Carson', platform: 'Netflix', category: 'Special Interest', age: '3+', teaches: 'Vehicles, family' },
-          { name: 'Tayo the Bus', platform: 'Netflix', category: 'Special Interest', age: '3+', teaches: 'Vehicles, friendship' },
           { name: 'Paw Patrol', platform: 'Paramount+', category: 'Special Interest', age: '3+', teaches: 'Community helpers' },
           { name: 'Spirit Riding Free', platform: 'Netflix', category: 'Special Interest', age: '5+', teaches: 'Horses, friendship' },
           { name: 'My Little Pony', platform: 'Netflix', category: 'Special Interest', age: '5+', teaches: 'Friendship, magic' }
@@ -386,6 +429,7 @@
           const [scheduleView, setScheduleView] = useState('family');
           const [showFilter, setShowFilter] = useState('all');
           const [categoryFilter, setCategoryFilter] = useState('All');
+          const [platformFilter, setPlatformFilter] = useState('All');
           const [searchQuery, setSearchQuery] = useState('');
 
           useEffect(() => {
@@ -541,6 +585,7 @@
 
           const getCategoryColor = (category) => {
             const colors = { 
+              Classic: 'bg-amber-100 text-amber-800',
               Science: 'bg-green-100 text-green-800', 
               Math: 'bg-blue-100 text-blue-800', 
               Reading: 'bg-purple-100 text-purple-800', 
@@ -610,11 +655,16 @@
             displayShows = displayShows.filter(s => s.category === categoryFilter);
           }
 
+          if (platformFilter !== 'All') {
+            displayShows = displayShows.filter(s => s.platform.includes(platformFilter));
+          }
+
           if (searchQuery) {
             displayShows = displayShows.filter(s => s.name.toLowerCase().includes(searchQuery.toLowerCase()) || s.teaches.toLowerCase().includes(searchQuery.toLowerCase()));
           }
 
           const categories = ['All', ...new Set(ALL_SHOWS.map(s => s.category))];
+          const platforms = ['All', 'Netflix', 'Apple TV+', 'Disney+', 'PBS Kids', 'Paramount+', 'Prime', 'HBO Max', 'YouTube', 'Peacock'];
 
           return (
             <div className="flex flex-col h-screen bg-gray-50">
@@ -763,6 +813,14 @@
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="w-full p-2 border rounded-lg text-sm"
                           />
+
+                          <select 
+                            value={platformFilter}
+                            onChange={(e) => setPlatformFilter(e.target.value)}
+                            className="w-full p-2 border rounded-lg text-sm"
+                          >
+                            {platforms.map(p => <option key={p} value={p}>{p === 'All' ? 'All Platforms' : p}</option>)}
+                          </select>
 
                           <div className="flex gap-2 overflow-x-auto pb-2">
                             {categories.map(cat => (
