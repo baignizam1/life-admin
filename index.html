@@ -36,43 +36,1923 @@
         const { useState, useEffect } = React;
         
         // Icons
-        const Calendar = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>);
         const Users = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>);
         const LogOut = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>);
-        const Trash2 = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>);
-        const RefreshCw = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>);
-        const Tv = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>);
-        const Home = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>);
         const ChefHat = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"></path><line x1="6" y1="17" x2="18" y2="17"></line></svg>);
-        const ShoppingCart = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>);
         const Plus = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>);
         const Edit = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>);
+        const Trash2 = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>);
         const X = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>);
 
-        // SEED DATA - Your existing 66 recipes (abbreviated for space, but include ALL in actual file)
-        const SEED_RECIPES = [
-          { id: 1, name: 'Sheet Pan Cheesy Steak Fajita Burritos', mealPrep: true, mealType: 'Lunch/Dinner', genre: 'Mexican', storage: 'Freeze 3+ months', cookingMethod: 'Sheet Pan', servings: 12, macros: { calories: 425, protein: 45, carbs: 46, fat: 19 }, link: 'https://www.instagram.com/reel/DRH-aJfEeTI/', ingredients: ['1360g flank steak', '6 bell peppers', '2 onions', '12 tortillas'], instructions: 'Sheet pan magic', reheating: 'Microwave 2 mins, air fry 6-8 mins' },
-          { id: 2, name: 'Chicken Pesto Alfredo Lasagna', mealPrep: true, mealType: 'Dinner', genre: 'Italian', storage: 'Freeze 3+ months', cookingMethod: 'Oven', servings: 10, macros: { calories: 630, protein: 63, carbs: 42, fat: 25 }, link: 'https://www.instagram.com/reel/DQ2LML-AcQv/', ingredients: ['1120g chicken breast', 'pesto', 'lasagna noodles'], instructions: 'Layer and bake', reheating: 'Microwave 4 mins' },
-          // ... Add all 66 recipes here in actual file
-        ];
-
-        const SEED_SHOWS = [
-          { id: 1, name: 'Hey Arnold', platform: 'Paramount+', category: 'Classic', age: '7+', teaches: 'Urban life, empathy' },
-          { id: 2, name: 'Arthur', platform: 'PBS Kids', category: 'Classic', age: '5+', teaches: 'Social situations' },
-          { id: 3, name: 'Wild Kratts', platform: 'PBS Kids', category: 'Science', age: '5+', teaches: 'Zoology' },
-          { id: 4, name: 'Bluey', platform: 'Disney+', category: 'Social', age: '3+', teaches: 'Family, imagination' },
-          { id: 5, name: 'Daniel Tiger', platform: 'PBS Kids', category: 'Social', age: '2+', teaches: 'Emotional intelligence' },
-          // ... Add all shows here
-        ];
-
-        const SEED_CHORES = [
-          { id: 1, name: 'Take dishes out of dishwasher', frequency: 'daily', assignees: ['Nizam', 'Rabika'], time: 'morning' },
-          { id: 2, name: 'Take Trash out', frequency: 'weekly', day: 0, assignees: ['Nizam', 'Rabika'] },
-          { id: 3, name: 'Feed the Cat', frequency: 'daily', times: 2, assignees: ['Sofiya'], time: 'morning-evening' },
-          { id: 4, name: 'Clean Kitchen Counters', frequency: 'daily', assignees: ['Nizam', 'Rabika'], time: 'evening' },
-          { id: 5, name: 'Vacuum Living Room', frequency: 'weekly', day: 6, assignees: ['Nizam', 'Rabika'] },
-          // ... Add all chores
-        ];
+        // ALL 66 RECIPES - COMPLETE FROM YOUR MESSAGES
+        const INITIAL_RECIPES = [
+  {
+    id: 1,
+    name: 'Sheet Pan Cheesy Steak Fajita Burritos',
+    mealPrep: true,
+    mealType: 'Lunch/Dinner',
+    genre: 'Mexican',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Sheet Pan',
+    servings: 12,
+    macros: { calories: 425, protein: 45, carbs: 46, fat: 19 },
+    link: 'https://www.instagram.com/reel/DRH-aJfEeTI/',
+    ingredients: [
+      '1360g (48oz) flank or skirt steak',
+      '3/4 tsp baking soda',
+      '2 tsp water',
+      '40g tomato paste',
+      '15g soy sauce',
+      '30g adobo sauce',
+      '3 packets taco seasoning',
+      '20g neutral oil',
+      '1 tsp cumin',
+      '6 bell peppers, diced',
+      '2 onions, diced',
+      '15g coarse salt',
+      '280g pico de gallo',
+      '150g 0% Greek yogurt',
+      '120g reduced-fat mozzarella',
+      '80g reduced-fat cheddar',
+      '12 low carb tortillas'
+    ],
+    instructions: 'Preheat oven to 425°F. Slice steak and tenderize with baking soda mixed with water. Marinate with tomato paste, soy sauce, adobo, taco seasoning, oil, and cumin. Roast peppers and onions with salt for 20-30 mins. Add steak and broil 18-20 mins. Mix with pico, yogurt, and cheese. Roll into burritos.',
+    reheating: 'Microwave 2 mins, then air fry 375°F for 6-8 mins'
+  },
+  {
+    id: 2,
+    name: 'Chicken Pesto Alfredo Lasagna',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Italian',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Oven',
+    servings: 10,
+    macros: { calories: 630, protein: 63, carbs: 42, fat: 25 },
+    link: 'https://www.instagram.com/reel/DQ2LML-AcQv/',
+    ingredients: [
+      '1120g chicken breast',
+      '60g basil pesto',
+      '30g white miso',
+      '240g chicken bone broth',
+      '2 Tbsp salt',
+      '2 Tbsp Italian seasoning',
+      '1 Tbsp garlic powder',
+      '2 tsp onion powder',
+      '1 tsp black pepper',
+      '900g blended cottage cheese',
+      '120g 1/3 fat cream cheese',
+      '100g parmigiano reggiano',
+      '225g reduced fat mozzarella',
+      '2 Tbsp chopped parsley',
+      '455g no-boil lasagna noodles',
+      '225g mozzarella (topping)',
+      '20g parmigiano (topping)',
+      '30g pesto (topping)'
+    ],
+    instructions: 'Bake chicken with pesto, miso, broth and seasonings at 400°F until cooked. Shred chicken and mix with pesto alfredo sauce made from cottage cheese, cream cheese, and parmesan. Layer with noodles and mozzarella. Bake covered 400°F for 30 mins, then broil 10-15 mins until golden.',
+    reheating: 'Microwave 4 mins with splash of milk'
+  },
+  {
+    id: 3,
+    name: 'Cheesy Enchilada Chicken Pasta',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Mexican',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Sheet Pan',
+    servings: 13,
+    macros: { calories: 580, protein: 51, carbs: 65, fat: 14 },
+    link: 'https://www.instagram.com/reel/DQkQFJggbBi/',
+    ingredients: [
+      '1344g chicken breast',
+      '784g red enchilada sauce',
+      '392g fire roasted tomatoes',
+      '420g tomatillo salsa',
+      '2 taco seasoning packets',
+      '3 bell peppers',
+      '1 red onion',
+      '900g 2% cottage cheese',
+      '120g extra sharp cheddar',
+      '240g milk',
+      '4 slices American cheese',
+      '896g pasta',
+      '227g reduced fat mozzarella'
+    ],
+    instructions: 'Roast diced peppers and onions. Add cubed chicken, enchilada sauce, tomatoes, salsa, and taco seasoning. Mix cottage cheese with cheddar, milk, and American cheese to make sauce. Cook pasta halfway, then combine with chicken mixture and cheese sauce. Top with mozzarella.',
+    reheating: 'Microwave 4 mins with splash of milk'
+  },
+  {
+    id: 4,
+    name: 'Chipotle Lime Chicken Pasta',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Mexican',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 9,
+    macros: { calories: 580, protein: 50, carbs: 72, fat: 12 },
+    link: 'https://www.instagram.com/reel/DQAJOwnATHY/',
+    ingredients: [
+      '1120g skinless chicken thighs',
+      '196g chipotles in adobo',
+      '40g honey',
+      '120g red enchilada sauce',
+      '1 yellow onion',
+      '3 bell peppers',
+      '1/2 Tbsp tajin',
+      '2 Tbsp salt',
+      'Garlic powder, cumin, pepper',
+      '672g pasta',
+      '240g 0% Greek yogurt (FAGE)',
+      '227g light sour cream',
+      '360g fat free milk',
+      '227g reduced fat mozzarella',
+      'Juice of 2 limes',
+      'Zest of 2 limes',
+      'Cilantro'
+    ],
+    instructions: 'Slow cook chicken with chipotles, honey, enchilada sauce, veggies and seasonings on high 3-4 hrs or low 4-5 hrs. Cook pasta halfway. Mix all with Greek yogurt, sour cream, milk, mozzarella, lime juice/zest. Cover and let sit 20 mins.',
+    reheating: 'Microwave covered 3-4 mins, add splash milk/water, microwave 2-3 mins more'
+  },
+  {
+    id: 5,
+    name: 'Thai Red Curry Chicken & Rice',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Thai',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 6,
+    macros: { calories: 580, protein: 50, carbs: 60, fat: 13 },
+    link: 'https://www.instagram.com/reel/DPcbUVMAQ5b/',
+    ingredients: [
+      '1344g boneless skinless chicken thighs',
+      '113g Thai red curry paste',
+      '20g ginger paste',
+      '20g garlic paste',
+      '60g soy sauce',
+      '40g brown sugar',
+      '400g light coconut milk',
+      'Cilantro',
+      'Thai basil',
+      'Juice and zest of 2-3 limes',
+      'Salt',
+      '420g jasmine rice'
+    ],
+    instructions: 'Slow cook chicken with curry paste, ginger, garlic, soy sauce, brown sugar, and coconut milk. Finish with fresh cilantro, Thai basil, and lime juice/zest. Serve over jasmine rice cooked in water.',
+    reheating: 'Microwave with splash of water'
+  },
+  {
+    id: 6,
+    name: 'High Protein Beef Lasagna',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Italian',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Oven',
+    servings: 10,
+    macros: { calories: 690, protein: 65, carbs: 48, fat: 27 },
+    link: 'https://www.instagram.com/reel/DO4vW7qjH1T/',
+    ingredients: [
+      '1360g 93% ground beef',
+      '2 medium onions, finely diced',
+      '20g olive oil',
+      '30g tomato paste',
+      '16oz beef bone broth',
+      '2 jars (25oz each) marinara',
+      'Salt, pepper, garlic, Italian seasoning, red chili flakes',
+      '30g white miso (optional)',
+      '900g cottage cheese',
+      '2 large eggs',
+      '227g mozzarella',
+      '30g parmesan',
+      '2 Tbsp parsley',
+      '455g lasagna noodles',
+      '227g mozzarella (topping)',
+      '40g parmesan (topping)'
+    ],
+    instructions: 'Brown beef with onions and seasonings. Add tomato paste, broth, marinara, and miso. Mix cottage cheese with eggs, mozzarella, parmesan, and parsley. Layer: sauce, noodles, cheese mixture. Repeat. Top with mozzarella and parmesan. Bake covered, then uncovered until golden.',
+    reheating: 'Microwave or oven'
+  },
+  {
+    id: 7,
+    name: 'Cheesy Buffalo Chicken Burritos',
+    mealPrep: true,
+    mealType: 'Lunch/Dinner',
+    genre: 'American',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Sheet Pan',
+    servings: 12,
+    macros: { calories: 475, protein: 44, carbs: 37, fat: 17 },
+    link: 'https://www.instagram.com/reel/DOB_QOcAR9r/',
+    ingredients: [
+      '2 sweet onions, diced',
+      '500g sweet potatoes, diced',
+      '15g coarse salt',
+      '1360g boneless skinless chicken thighs, diced',
+      '120g buffalo sauce',
+      '40g tomato paste',
+      '40g honey',
+      '30g Worcestershire',
+      '20g butter',
+      '1 tsp garlic powder',
+      'Salt & pepper',
+      '10g corn starch',
+      '180g reduced-fat cheddar',
+      '150g 0% Greek yogurt',
+      'Diced green onions',
+      '160g reduced fat mozzarella',
+      '12 low carb tortillas'
+    ],
+    instructions: 'Roast onions and sweet potatoes with salt. Add diced chicken, buffalo sauce, tomato paste, honey, Worcestershire, butter, and seasonings. Thicken with cornstarch. Mix with cheddar, Greek yogurt, green onions, and mozzarella. Roll into tortillas.',
+    reheating: 'Microwave 2 mins, air fry or pan fry to crisp'
+  },
+  {
+    id: 8,
+    name: 'Butter Chicken Mac N Cheese',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Indian',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 10,
+    macros: { calories: 545, protein: 42, carbs: 58, fat: 17 },
+    link: 'https://www.instagram.com/reel/DNYnopBpHoX/',
+    ingredients: [
+      '900g chicken breast, diced',
+      '2 onions, sautéed',
+      '30g tomato paste',
+      '30g garlic paste',
+      '15g ginger paste',
+      '30g butter',
+      '400g blended fire-roasted tomatoes',
+      '15g sugar',
+      '2 Tbsp paprika',
+      '1 Tbsp chili powder',
+      '1 Tbsp curry powder',
+      '2 tsp cumin',
+      '1 Tbsp salt',
+      '672g shell pasta',
+      '1 cup pasta water',
+      '400g 0% Greek yogurt (FAGE)',
+      '120g 1/3 fat cream cheese',
+      'Chopped cilantro',
+      '227g extra sharp cheddar',
+      '80g reduced fat mozzarella',
+      '1 tsp garam masala'
+    ],
+    instructions: 'Slow cook chicken with butter chicken spices (onions, tomato paste, garlic, ginger, butter, tomatoes, sugar, spices). Cook pasta halfway. Mix with cheese sauce made from Greek yogurt, cream cheese, cheddar, and mozzarella. Add garam masala. Cover 15-20 mins.',
+    reheating: 'Microwave 4 mins with splash of milk'
+  },
+  {
+    id: 9,
+    name: 'Sheet Pan Cheesy Chicken Fajita Burritos',
+    mealPrep: true,
+    mealType: 'Lunch/Dinner',
+    genre: 'Mexican',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Sheet Pan',
+    servings: 12,
+    macros: { calories: 445, protein: 42, carbs: 35, fat: 16 },
+    link: 'https://www.instagram.com/reel/DMGVunyJSpv/',
+    ingredients: [
+      '6 bell peppers, diced',
+      '2 onions, diced',
+      '15g coarse salt',
+      '1360g boneless skinless chicken thighs, diced',
+      '40g tomato paste',
+      '30g chili paste',
+      '3 packets taco seasoning',
+      '20g neutral oil',
+      '280g pico de gallo',
+      '150g 0% Greek yogurt',
+      '120g reduced-fat mozzarella',
+      '80g reduced-fat cheddar',
+      '80g mozzarella (topping)',
+      'Chopped cilantro',
+      '12 protein tortillas'
+    ],
+    instructions: 'Roast peppers and onions with salt 20-30 mins. Add diced chicken, tomato paste, chili paste, taco seasoning, and oil. Roast 18-20 mins. Mix with pico de gallo, Greek yogurt, cheddar, and mozzarella. Roll into protein tortillas. Top with more mozzarella and cilantro.',
+    reheating: 'Microwave 3-4 mins, air fry or pan fry for crispy'
+  },
+  {
+    id: 10,
+    name: 'Slow Cooker Chili Crisp Chicken & Rice',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Asian',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 8,
+    macros: { calories: 550, protein: 48, carbs: 55, fat: 14 },
+    link: 'https://www.instagram.com/reel/DLfXOVCsgIV/',
+    ingredients: [
+      '1360g chicken breast',
+      '100g chili crisp',
+      '80g honey',
+      '60g soy sauce',
+      '30g sriracha',
+      'Salt, pepper, garlic powder',
+      '30g seasoned rice vinegar',
+      '2 green onions',
+      'Sesame seeds',
+      '480g short grain rice',
+      '720g chicken bone broth',
+      '50g low-fat mayo',
+      '150g 0% Greek yogurt',
+      '70g sriracha',
+      '30g no-sugar ketchup',
+      'Milk as needed'
+    ],
+    instructions: 'Slow cook chicken with chili crisp, honey, soy sauce, sriracha, and seasonings on high 3-4 hrs or low 4-5 hrs. Cook short grain rice in chicken bone broth. Shred chicken and add rice vinegar, chopped green onions, sesame seeds. Mix with rice. Make spicy mayo with mayo, Greek yogurt, sriracha, ketchup, and milk.',
+    reheating: 'Microwave covered ~4 mins'
+  },
+  {
+    id: 11,
+    name: 'Slow Cooker Chicken Taco Bowls',
+    mealPrep: true,
+    mealType: 'Lunch/Dinner',
+    genre: 'Mexican',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 10,
+    macros: { calories: 535, protein: 44, carbs: 64, fat: 10 },
+    link: 'https://www.instagram.com/reel/DLNigR4JYM7/',
+    ingredients: [
+      '1360g boneless skinless chicken thighs',
+      '3 packets taco seasoning',
+      '480g red enchilada sauce',
+      '340g fire-roasted frozen corn',
+      '440g black beans',
+      'Salt',
+      '480g jasmine rice',
+      '910g chicken bone broth',
+      '450g 0% Greek yogurt',
+      '30g lime juice',
+      '3 chipotle peppers',
+      '25g adobo sauce',
+      '30g honey',
+      '10g avocado oil',
+      '60ml milk',
+      'Cilantro'
+    ],
+    instructions: 'Slow cook chicken with taco seasoning, enchilada sauce, corn, beans, and salt on high 2-3 hrs or low 3-4 hrs. Cook jasmine rice in chicken bone broth. Shred chicken. Make chipotle lime sauce with Greek yogurt, lime juice, chipotle peppers, adobo, honey, oil, and milk. Combine all with cilantro.',
+    reheating: 'Microwave 4-5 mins with splash of water'
+  },
+  {
+    id: 12,
+    name: 'The Best High Protein Chicken Tikka Masala',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Indian',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Stovetop',
+    servings: 8,
+    macros: { calories: 520, protein: 48, carbs: 55, fat: 12 },
+    link: 'https://www.instagram.com/reel/DJzWcioJQTe/',
+    ingredients: [
+      '1350g chicken breast',
+      '160g 5% Greek yogurt',
+      '15g garlic paste',
+      '15g ginger paste',
+      '1 lemon juice',
+      '1.5 Tbsp tikka masala seasoning',
+      '2 Tbsp salt',
+      '25g oil',
+      '2 onions, chopped',
+      '30g garlic paste',
+      '30g ginger paste',
+      '60g tomato paste',
+      '2 tsp tikka masala',
+      '2 tsp garam masala',
+      '400g diced tomatoes',
+      '1 cup water',
+      '150g 5% Greek yogurt',
+      '90g heavy cream',
+      '15g sugar',
+      '15g sweetener',
+      'Cilantro',
+      '440g rice',
+      '880ml chicken bone broth'
+    ],
+    instructions: 'Marinate chicken in yogurt, garlic, ginger, lemon, tikka masala, and salt. Sauté onions, add garlic/ginger paste, tomato paste, spices. Add tomatoes and water. Simmer. Cook chicken. Add yogurt, cream, sugar, sweetener. Cook rice in bone broth. Serve with cilantro.',
+    reheating: 'Microwave 4-5 mins'
+  },
+  {
+    id: 13,
+    name: '3 Cheese Chicken Alfredo',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Italian',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 10,
+    macros: { calories: 520, protein: 45, carbs: 54, fat: 15 },
+    link: 'https://www.instagram.com/reel/DKIHK2UJx-H/',
+    ingredients: [
+      '900g chicken breast',
+      '1 Tbsp salt',
+      '2 tsp garlic powder',
+      '2 tsp onion powder',
+      '1 tsp black pepper',
+      '30g butter',
+      'Handful garlic cloves in foil',
+      '5g oil',
+      '672g pasta',
+      '1/2 cup pasta water',
+      '800g 2% cottage cheese',
+      '120g 1/3 fat cream cheese',
+      '120g parmigiano reggiano',
+      '60g Asiago',
+      '360ml milk',
+      'Salt & pepper'
+    ],
+    instructions: 'Slow cook chicken with seasonings, butter, and roasted garlic in foil on high 2-3 hrs or low 3-4 hrs. Cook pasta halfway. Blend cottage cheese, cream cheese, parmigiano, Asiago, and milk for alfredo sauce. Mix with pasta and chicken. Cover 15-20 mins.',
+    reheating: 'Microwave 4 mins with 2-3 Tbsp milk'
+  },
+  {
+    id: 14,
+    name: 'Air Fried Tandoori Chicken Bowls',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Indian',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Air Fryer',
+    servings: 5,
+    macros: { calories: 550, protein: 53, carbs: 46, fat: 16 },
+    link: 'https://www.instagram.com/reel/DJcFaxmxB3t/',
+    ingredients: [
+      '900g boneless skinless chicken thighs',
+      '120g 5% Greek yogurt',
+      '1 Tbsp garlic paste',
+      '1 Tbsp ginger paste',
+      '1.5 Tbsp salt',
+      '1.5 Tbsp tikka masala seasoning',
+      '1 tsp smoked paprika',
+      '1 lemon juice',
+      '15g oil',
+      '1 diced onion',
+      '1 tsp turmeric',
+      '1 tsp curry powder',
+      '270g basmati rice',
+      '540g chicken bone broth',
+      '150g 5% Greek yogurt',
+      '100g feta',
+      '60ml fat free milk',
+      'Lemon juice',
+      'Cilantro',
+      'Salt/garlic'
+    ],
+    instructions: 'Marinate chicken in yogurt, garlic, ginger, salt, tikka masala, paprika, lemon, and oil. Air fry. Make curry rice by cooking rice in bone broth with sautéed onion, turmeric, curry powder. Make feta yogurt sauce with Greek yogurt, feta, milk, lemon, salt, garlic. Combine with cilantro.',
+    reheating: 'Microwave or enjoy fresh'
+  },
+  {
+    id: 15,
+    name: 'Broccoli Cheddar Soup Mac n Cheese',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'American',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 12,
+    macros: { calories: 550, protein: 46, carbs: 51, fat: 18 },
+    link: 'https://www.instagram.com/reel/DG_AOSxJ7vf/',
+    ingredients: [
+      '1350g boneless skinless chicken thighs',
+      '30g garlic paste',
+      '30g Worcestershire',
+      '20g Dijon mustard',
+      '1 Tbsp onion powder',
+      '1 Tbsp garlic powder',
+      '1 Tbsp salt',
+      '2 tsp black pepper',
+      '2 tsp smoked paprika',
+      '2 diced onions',
+      '680g frozen broccoli',
+      '15g olive oil',
+      '672g pasta',
+      '800g 2% cottage cheese',
+      '125g extra sharp cheddar',
+      '125g American cheese',
+      '10g nutritional yeast',
+      '650ml whole milk',
+      'Salt & pepper'
+    ],
+    instructions: 'Slow cook chicken with garlic paste, Worcestershire, Dijon, and seasonings on high 3-4 hrs or low 4-5 hrs. Roast broccoli with olive oil. Cook pasta halfway. Blend cottage cheese, cheddar, American cheese, nutritional yeast, milk for sauce. Mix everything together.',
+    reheating: 'Microwave 4 mins with splash of milk'
+  },
+  {
+    id: 16,
+    name: 'Macro-Friendly Queso Chicken Rolls',
+    mealPrep: true,
+    mealType: 'Snack/Lunch',
+    genre: 'Mexican',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Stovetop',
+    servings: 8,
+    macros: { calories: 335, protein: 35, carbs: 25, fat: 9 },
+    link: 'https://www.instagram.com/reel/DHja6NsJigP/',
+    ingredients: [
+      '20oz chicken breast',
+      'Juice of 1 lime',
+      '1 packet taco seasoning',
+      '200g 2% cottage cheese',
+      '75g fat free Greek yogurt',
+      '4 Tbsp salsa',
+      '2 Tbsp red enchilada sauce',
+      'Garlic powder & salt',
+      '4 Tbsp pico de gallo',
+      '50g reduced fat cheese',
+      '50g fat free cheddar',
+      '8 low carb tortillas'
+    ],
+    instructions: 'Cook chicken with lime juice and taco seasoning. Blend cottage cheese, Greek yogurt, salsa, enchilada sauce, garlic, and salt for queso. Mix cooked chicken with queso and pico de gallo. Roll in low carb tortillas with reduced fat cheese and fat free cheddar.',
+    reheating: 'Microwave 2-3 mins'
+  },
+  {
+    id: 17,
+    name: 'Chicken Tinga Rice Bowls',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Mexican',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Stovetop',
+    servings: 10,
+    macros: { calories: 510, protein: 50, carbs: 49, fat: 10 },
+    link: 'https://www.instagram.com/reel/DI9Wd48JkZm/',
+    ingredients: [
+      '1800g chicken breast',
+      '30g oil',
+      '2 diced white onions',
+      'Garlic',
+      '15g tomato paste',
+      '10g oil',
+      '4 tsp oregano',
+      '1 tsp smoked paprika',
+      '1/2 tsp cumin',
+      '800g fire roasted tomatoes',
+      '50g apple cider vinegar',
+      '200g chipotle peppers in adobo',
+      '450ml chicken bone broth',
+      'Salt',
+      '3 bay leaves',
+      '500g rice',
+      '30g 0% Greek yogurt per bowl',
+      '30g pico per bowl'
+    ],
+    instructions: 'Sear chicken breast in oil. Remove. Sauté onions and garlic with tomato paste and oil. Add oregano, paprika, cumin, fire roasted tomatoes, vinegar, chipotle peppers, bone broth, salt, and bay leaves. Simmer chicken in sauce until cooked. Shred. Serve over rice with Greek yogurt and pico.',
+    reheating: 'Microwave with splash of water'
+  },
+  {
+    id: 18,
+    name: 'Cheesy Chicken Tzatziki Burritos',
+    mealPrep: true,
+    mealType: 'Lunch/Dinner',
+    genre: 'Mediterranean',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Stovetop',
+    servings: 14,
+    macros: { calories: 430, protein: 34, carbs: 41, fat: 14 },
+    link: 'https://www.instagram.com/reel/DGtYFR4Jvsk/',
+    ingredients: [
+      '7 poblanos',
+      '2 yellow onions',
+      '1344g chicken breast',
+      'Salt, pepper, garlic powder',
+      '30g olive oil',
+      '300g store-bought tzatziki',
+      '300g 0% Greek yogurt',
+      '227g Monterrey jack',
+      '250g pico de gallo',
+      'Cilantro',
+      'Salt',
+      '14 burrito tortillas'
+    ],
+    instructions: 'Roast poblano peppers and yellow onions. Dice chicken breast and season with salt, pepper, garlic powder. Sear in olive oil. Mix with roasted poblanos/onions, tzatziki, Greek yogurt, Monterrey jack, pico de gallo, cilantro, and salt. Roll into burrito tortillas.',
+    reheating: 'Microwave 2-3 mins, pan fry 2-4 mins per side'
+  },
+  {
+    id: 19,
+    name: 'Chili Cheese Beef Burritos',
+    mealPrep: true,
+    mealType: 'Lunch/Dinner',
+    genre: 'Mexican',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Stovetop',
+    servings: 16,
+    macros: { calories: 445, protein: 32, carbs: 44, fat: 15 },
+    link: 'https://www.instagram.com/reel/DGJPGUYSnVB/',
+    ingredients: [
+      '500g diced sweet potatoes',
+      '5g avocado oil',
+      'Salt, pepper, chili powder',
+      '1344g 93% beef',
+      '2 packets chili seasoning',
+      '300g 2% cottage cheese',
+      '100g American cheese',
+      '410g fire roasted tomatoes',
+      '200g chipotle peppers in adobo',
+      'Salt/pepper/garlic',
+      '2 Tbsp corn starch',
+      '2 Tbsp cold water',
+      '150g sharp cheddar',
+      'Cilantro',
+      '16 burrito tortillas',
+      '0% Greek yogurt'
+    ],
+    instructions: 'Roast sweet potatoes with oil, salt, pepper, chili powder. Cook 93% beef with chili seasoning. Blend cottage cheese, American cheese, fire roasted tomatoes, chipotle peppers, salt, pepper, garlic. Thicken with cornstarch slurry. Mix beef, sweet potatoes, chili cheese sauce, sharp cheddar, cilantro. Roll into tortillas with Greek yogurt.',
+    reheating: 'Microwave then air fry or pan fry'
+  },
+  {
+    id: 20,
+    name: 'Queso Chicken Mac n Cheese',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Mexican',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 10,
+    macros: { calories: 540, protein: 46, carbs: 62, fat: 13 },
+    link: 'https://www.instagram.com/reel/DFN3c-Wpuvj/',
+    ingredients: [
+      '32oz chicken breast',
+      '120g red enchilada sauce',
+      '80g green chiles',
+      '400g fire roasted tomatoes',
+      '2 Tbsp garlic purée',
+      '2 tsp onion powder',
+      '1 Tbsp salt',
+      '1 tsp black pepper',
+      '1/2 tsp cayenne',
+      '2 orange bell peppers',
+      '2 red bell peppers',
+      '1 onion',
+      '672g pasta',
+      '800g 2% cottage cheese',
+      '100g 1/3 fat cream cheese',
+      '150g extra sharp cheddar',
+      '30g cheddar powder',
+      '120g red enchilada sauce',
+      '150g milk',
+      'Cilantro'
+    ],
+    instructions: 'Slow cook chicken breast with enchilada sauce, green chiles, fire roasted tomatoes, garlic, onion powder, salt, pepper, cayenne, bell peppers, and onion on high 2-3 hrs. Cook pasta halfway. Blend cottage cheese, cream cheese, cheddar, cheddar powder, enchilada sauce, milk for queso sauce. Mix with chicken and pasta. Cover 15-20 mins. Top with cilantro.',
+    reheating: 'Microwave 4 mins with 2-3 Tbsp milk'
+  },
+  {
+    id: 21,
+    name: 'Butter Chicken (Most Viral)',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Indian',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 7,
+    macros: { calories: 460, protein: 38, carbs: 50, fat: 11 },
+    link: 'https://www.instagram.com/reel/DE7n94xpM6m/',
+    ingredients: [
+      '30g butter',
+      '2 onions, chopped',
+      '2 Tbsp tomato paste',
+      '2 Tbsp garlic paste',
+      '2 Tbsp ginger paste',
+      '2 Tbsp paprika',
+      '1 tsp cayenne',
+      '2 Tbsp garam masala',
+      '1 tsp cumin',
+      '1 tsp coriander',
+      '2 tsp salt',
+      'Black pepper',
+      '14oz crushed fire roasted tomatoes',
+      '1/2 cup water',
+      '1 Tbsp bouillon',
+      '1 Tbsp sugar',
+      '32oz chicken breast, diced',
+      '250g 0% Greek yogurt',
+      '30g butter',
+      '420g basmati rice',
+      '630ml water'
+    ],
+    instructions: 'Sauté onions in butter with tomato paste, garlic, ginger, paprika, cayenne, garam masala, cumin, coriander, salt, pepper. Blend with crushed tomatoes, water, bouillon, sugar. Slow cook diced chicken in sauce on high 2-3 hrs or low 3-4 hrs. Finish with Greek yogurt and butter. Serve with basmati rice cooked in water.',
+    reheating: 'Microwave 4 mins'
+  },
+  {
+    id: 22,
+    name: 'Garlic Butter Chicken Alfredo',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Italian',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 10,
+    macros: { calories: 515, protein: 47, carbs: 54, fat: 14 },
+    link: 'https://www.instagram.com/reel/DEu-GtCJDcf/',
+    ingredients: [
+      '32oz chicken breast',
+      '30g parmigiano reggiano',
+      'Juice of 1 lemon',
+      '2 Tbsp garlic purée',
+      '2 tsp garlic powder',
+      '2 tsp onion powder',
+      '1 Tbsp salt',
+      '1 tsp black pepper',
+      '2 tsp garlic brown butter seasoning',
+      'Crushed red pepper',
+      '1/2 cup water',
+      '30g butter',
+      '672g pasta',
+      '1/2 cup pasta water',
+      '800g 2% cottage cheese',
+      '120g 1/3 fat cream cheese',
+      '120g parmigiano reggiano',
+      '240ml milk',
+      'Salt & pepper'
+    ],
+    instructions: 'Slow cook chicken breast with parmesan, lemon juice, garlic purée, garlic powder, onion powder, salt, pepper, garlic brown butter seasoning, red pepper, water, and butter on high 2-3 hrs or low 5-6 hrs. Cook pasta halfway with pasta water. Blend cottage cheese, cream cheese, parmesan, milk, salt, pepper for alfredo. Mix with chicken and pasta. Cook 15-20 mins.',
+    reheating: 'Microwave 4 mins with 2-3 Tbsp milk'
+  },
+  {
+    id: 23,
+    name: 'Tikka Masala Burritos',
+    mealPrep: true,
+    mealType: 'Lunch/Dinner',
+    genre: 'Indian Fusion',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Grill/Stovetop',
+    servings: 11,
+    macros: { calories: 480, protein: 40, carbs: 56, fat: 11 },
+    link: 'https://www.instagram.com/reel/DEXtwKPJKIy/',
+    ingredients: [
+      '3 Tbsp smoked paprika',
+      '2 Tbsp cumin',
+      '1 Tbsp garam masala',
+      '1 Tbsp coriander',
+      '1 tsp turmeric',
+      '1 tsp cayenne',
+      '48oz chicken breast',
+      '240g yogurt',
+      '2 Tbsp garlic',
+      '2 Tbsp ginger paste',
+      'Juice of 2 lemons',
+      '2 Tbsp salt',
+      '30g butter',
+      '2 onions',
+      '4 Tbsp tomato paste',
+      '14.5oz tomatoes',
+      '150ml water',
+      'Cilantro',
+      '200g Greek yogurt',
+      '15g butter',
+      '200g basmati rice',
+      '350g bone broth',
+      '11 tortillas',
+      '600g Greek yogurt sauce'
+    ],
+    instructions: 'Mix paprika, cumin, garam masala, coriander, turmeric, cayenne. Marinate chicken in yogurt, garlic, ginger, lemon, salt, and spice mix. Grill chicken. Make masala sauce with butter, onions, tomato paste, tomatoes, water, spices. Cook basmati rice in bone broth with butter. Make Greek yogurt sauce. Roll grilled chicken, rice, masala sauce in tortillas. Serve with yogurt sauce and cilantro.',
+    reheating: 'Microwave 2 mins, air fry 375°F for 6-8 mins'
+  },
+  {
+    id: 24,
+    name: 'Frozen Cheesy Chicken & Rice Burritos',
+    mealPrep: true,
+    mealType: 'Lunch/Dinner',
+    genre: 'Mexican',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 18,
+    macros: { calories: 445, protein: 32, carbs: 52, fat: 12 },
+    link: 'https://www.instagram.com/reel/DEK8tKVpgUC/',
+    ingredients: [
+      '48oz boneless skinless chicken thighs',
+      '2 taco seasoning packets',
+      '1 Tbsp lime juice',
+      '1 Tbsp chicken bouillon',
+      '15oz green enchilada sauce',
+      'Garlic and salt',
+      '400g rice',
+      '5 diced roma tomatoes',
+      '3 diced jalapeños',
+      '2 diced white onions',
+      '1 bunch cilantro',
+      'Juice of 2 limes',
+      '500g 0% Greek yogurt (FAGE)',
+      '150g reduced fat cheddar',
+      '120g reduced fat mozzarella',
+      '18 low carb tortillas'
+    ],
+    instructions: 'Slow cook chicken thighs with taco seasoning, lime juice, chicken bouillon, green enchilada sauce, garlic, and salt on high 2-3 hrs or low 3-4 hrs. Cook rice. Mix shredded chicken with rice, diced roma tomatoes, jalapeños, white onions, cilantro, lime juice, Greek yogurt, cheddar, and mozzarella. Chill to thicken. Roll into low carb tortillas.',
+    reheating: 'Microwave then air fry or pan fry'
+  },
+  {
+    id: 25,
+    name: 'Brisket Queso Mac n Cheese',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'American',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 10,
+    macros: { calories: 560, protein: 46, carbs: 63, fat: 16 },
+    link: 'https://www.instagram.com/reel/DDmxAvDpVwq/',
+    ingredients: [
+      '900g flat cut brisket, fat removed',
+      '400g crushed fire-roasted tomatoes',
+      '120g red enchilada sauce',
+      '200g chipotle peppers in adobo',
+      '45g green chiles',
+      '60g honey',
+      '1 Tbsp salt',
+      '2 tsp onion powder',
+      '2 tsp black pepper',
+      '672g pasta',
+      '800g 2% cottage cheese',
+      '100g American cheese',
+      '150g extra sharp cheddar',
+      '80g red enchilada sauce',
+      '5g nutritional yeast',
+      'Salt/pepper',
+      'Cilantro'
+    ],
+    instructions: 'Slow cook brisket with crushed tomatoes, enchilada sauce, chipotle peppers, green chiles, honey, salt, onion powder, and pepper on high 4-5 hrs or low 5-6+ hrs. Cook pasta halfway. Shred brisket. Blend cottage cheese, American cheese, cheddar, enchilada sauce, nutritional yeast for queso sauce. Mix brisket, pasta, and queso. Top with cilantro.',
+    reheating: 'Microwave 4 mins with 2-3 Tbsp milk'
+  },
+  {
+    id: 26,
+    name: 'High Protein Pizza Mac',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Italian',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 10,
+    macros: { calories: 610, protein: 55, carbs: 57, fat: 21 },
+    link: 'https://www.instagram.com/reel/DCwtz_zPjl_/',
+    ingredients: [
+      '896g 93% ground beef',
+      '425g tomato sauce',
+      '1 diced onion',
+      '1.5 Tbsp Italian seasoning',
+      '1 Tbsp salt',
+      '1 Tbsp onion powder',
+      '1 Tbsp garlic powder',
+      '1 Tbsp black pepper',
+      'Chili flakes',
+      '120g turkey pepperoni',
+      '1 Tbsp olive oil',
+      '672g pasta',
+      '800g 2% cottage cheese',
+      '100g extra sharp cheddar',
+      '100g mozzarella',
+      '100g parmigiano reggiano',
+      '360g milk',
+      'Salt & pepper',
+      '6-7 slices prosciutto'
+    ],
+    instructions: 'Slow cook ground beef with tomato sauce, onion, Italian seasoning, salt, onion powder, garlic powder, pepper, chili flakes, and turkey pepperoni on high 2-3 hrs or low 3-4 hrs. Crisp prosciutto in olive oil. Cook pasta halfway. Blend cottage cheese, cheddar, mozzarella, parmesan, milk, salt, pepper for cheese sauce. Mix beef and pasta with cheese sauce. Top with crispy prosciutto.',
+    reheating: 'Microwave 4 mins'
+  },
+  {
+    id: 27,
+    name: 'Spicy Chicken Alfredo',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Italian',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 10,
+    macros: { calories: 525, protein: 46, carbs: 58, fat: 14 },
+    link: 'https://www.instagram.com/reel/DAOs4D1p527/',
+    ingredients: [
+      '32oz diced chicken breast',
+      '30g parmigiano reggiano',
+      '2 Tbsp minced garlic',
+      '1 Tbsp salt',
+      '2 tsp crushed red pepper',
+      '2 tsp garlic powder',
+      '2 tsp onion powder',
+      '1 tsp black pepper',
+      '1/2 tsp cayenne',
+      '120ml chicken bone broth',
+      '30g butter',
+      '5 red bell peppers',
+      '10 cloves garlic',
+      '800g 2% cottage cheese',
+      '120g 1/3 fat cream cheese',
+      '120g parmigiano reggiano',
+      '240ml milk',
+      'Red chili flakes',
+      '672g pasta',
+      '1 cup pasta water',
+      'Chopped parsley'
+    ],
+    instructions: 'Slow cook diced chicken with parmesan, minced garlic, salt, crushed red pepper, garlic powder, onion powder, pepper, cayenne, bone broth, and butter on high 2-3 hrs or low 5-6 hrs. Roast red bell peppers and garlic cloves. Blend roasted peppers/garlic into alfredo sauce with cottage cheese, cream cheese, parmesan, milk, red chili flakes. Cook pasta halfway with pasta water. Combine chicken, pasta, alfredo. Top with parsley.',
+    reheating: 'Microwave 4 mins'
+  },
+  {
+    id: 28,
+    name: 'Frozen Beefy Queso Burrito',
+    mealPrep: true,
+    mealType: 'Lunch/Dinner',
+    genre: 'Mexican',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Stovetop',
+    servings: 12,
+    macros: { calories: 400, protein: 35, carbs: 41, fat: 11 },
+    link: 'https://www.instagram.com/reel/C9a5lI-JRw_/',
+    ingredients: [
+      '32oz 96% ground beef',
+      '3 tsp salt',
+      '2 tsp onion',
+      '2 tsp garlic',
+      '1 tsp paprika',
+      '1 tsp chili powder',
+      '200g red enchilada sauce',
+      '400g 0% Greek yogurt',
+      '200g pico de gallo',
+      '160g 2% cheddar',
+      '120g fat free cheddar',
+      '120g green chiles',
+      '50g nutritional yeast',
+      '40g honey',
+      '1 bunch cilantro',
+      '15g beef bouillon',
+      '12 burrito tortillas'
+    ],
+    instructions: 'Cook 96% ground beef with salt, onion, garlic, paprika, chili powder. Mix with red enchilada sauce, Greek yogurt, pico de gallo, 2% cheddar, fat free cheddar, green chiles, nutritional yeast, honey, cilantro, and beef bouillon. Roll into burrito tortillas.',
+    reheating: 'Microwave 2 mins, air fry 375°F for 6-8 mins'
+  },
+  {
+    id: 29,
+    name: 'Slow Cooker Quesabirria Burritos',
+    mealPrep: true,
+    mealType: 'Lunch/Dinner',
+    genre: 'Mexican',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 18,
+    macros: { calories: 510, protein: 40, carbs: 52, fat: 14 },
+    link: 'https://www.instagram.com/reel/C8kNLrWpjZY/',
+    ingredients: [
+      '2 onions, chopped',
+      '10 cloves garlic',
+      '20g avocado oil',
+      '10 guajillo chiles',
+      '3 ancho chiles',
+      '32oz beef bone broth',
+      '1 cup water',
+      '1 Tbsp salt',
+      '1 Tbsp cumin',
+      '1 Tbsp oregano',
+      '1 Tbsp black pepper',
+      '1 tsp paprika',
+      '90ml apple cider vinegar',
+      '240ml crushed tomatoes',
+      'Cilantro stems',
+      '64oz top sirloin, trimmed',
+      '3 bay leaves',
+      '300g rice',
+      '226g mozzarella',
+      '226g fat free mozzarella',
+      '200g Greek yogurt',
+      'Cilantro',
+      '1-2 diced onions',
+      '18 tortillas'
+    ],
+    instructions: 'Sauté onions and garlic in oil. Toast guajillo and ancho chiles. Blend chiles with bone broth, water, salt, cumin, oregano, pepper, paprika, vinegar, crushed tomatoes, cilantro stems. Slow cook top sirloin in chile sauce with bay leaves on low 7-8 hrs. Shred beef. Mix with cooked rice, mozzarella, fat free mozzarella, Greek yogurt, cilantro, diced onions. Roll into tortillas.',
+    reheating: 'Microwave 2-3 mins, air fry 375°F for 6-8 mins'
+  },
+  {
+    id: 30,
+    name: 'Carne Asada Mac n Cheese Burritos',
+    mealPrep: true,
+    mealType: 'Lunch/Dinner',
+    genre: 'Mexican Fusion',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Grill',
+    servings: 14,
+    macros: { calories: 545, protein: 45, carbs: 55, fat: 15 },
+    link: 'https://www.instagram.com/reel/C82PA6dRHjt/',
+    ingredients: [
+      '240ml orange juice',
+      '120ml soy sauce',
+      'Juice of 3 limes',
+      '16 cloves garlic',
+      '1 Tbsp cumin',
+      '1 Tbsp salt',
+      '2 tsp black pepper',
+      '2 tsp onion',
+      '3 ancho chiles',
+      '6 guajillo peppers',
+      '7.5oz chipotles in adobo',
+      '40g honey',
+      '25g avocado oil',
+      'Cilantro',
+      '4 lbs flank steak',
+      '300g pasta',
+      '275g cottage cheese',
+      '30g cheddar powder',
+      '120g 2% cheddar',
+      '120g fat free cheddar',
+      '240ml milk',
+      'Salt & pepper',
+      '5 Tbsp marinade',
+      '200g Greek yogurt',
+      '30ml milk',
+      '14 tortillas'
+    ],
+    instructions: 'Marinate flank steak in orange juice, soy sauce, lime juice, garlic, cumin, salt, pepper, onion, blended ancho/guajillo/chipotle chiles, honey, oil, cilantro. Grill steak. Make mac n cheese with pasta, cottage cheese, cheddar powder, 2% cheddar, fat free cheddar, milk, salt, pepper, and 5 Tbsp marinade. Make creamy sauce with Greek yogurt and milk. Roll grilled steak and mac n cheese into tortillas with creamy sauce.',
+    reheating: 'Microwave 2-3 mins, air fry 375°F for 6-8 mins'
+  },
+  {
+    id: 31,
+    name: 'High Protein Cheeseburger Burritos',
+    mealPrep: true,
+    mealType: 'Lunch/Dinner',
+    genre: 'American',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Stovetop',
+    servings: 14,
+    macros: { calories: 430, protein: 38, carbs: 39, fat: 13 },
+    link: 'https://www.instagram.com/stealth_health_life/reel/C7cSX9VpLS5/',
+    ingredients: [
+      '3 diced onions',
+      '16oz beef bone broth',
+      'Soy sauce',
+      '48oz 93% beef',
+      '6 tsp salt',
+      '4 tsp onion powder',
+      '4 tsp garlic powder',
+      '4 tsp black pepper',
+      '4 tsp oregano',
+      '2 tsp cumin',
+      '14.5oz diced tomatoes',
+      '1/2 batch caramelized onions',
+      '200g 2% cheddar',
+      '200g fat free cheddar',
+      'Green onions',
+      '120g light mayo',
+      '120g Greek yogurt',
+      '100g ketchup',
+      '4 tsp relish',
+      '1/2 batch caramelized onions',
+      'Garlic, pepper, salt',
+      '14 tortillas'
+    ],
+    instructions: 'Caramelize 3 diced onions in beef bone broth and soy sauce. Cook 93% beef with salt, onion powder, garlic powder, pepper, oregano, cumin. Add diced tomatoes and half the caramelized onions. Mix with 2% cheddar, fat free cheddar, green onions. Make burger sauce with light mayo, Greek yogurt, ketchup, relish, remaining caramelized onions, garlic, pepper, salt. Roll beef mixture into tortillas with burger sauce.',
+    reheating: 'Microwave 2 mins, air fry 375°F for 6-8 mins'
+  },
+  {
+    id: 32,
+    name: 'Chicken Parmesan Pasta',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Italian',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 10,
+    macros: { calories: 475, protein: 43, carbs: 58, fat: 10 },
+    link: 'https://www.instagram.com/reel/C639jWMrLIx/',
+    ingredients: [
+      '40oz chicken breast',
+      '28oz crushed tomatoes',
+      '2 Tbsp tomato paste',
+      '2 Tbsp minced garlic',
+      '1.5 Tbsp coarse salt',
+      '1 Tbsp Italian seasoning',
+      '1 tsp black pepper, onion, chili flakes',
+      '15g parmigiano reggiano',
+      '672g pasta',
+      '300g 2% cottage cheese',
+      '240ml fat free milk',
+      '100g 1/3 fat cream cheese',
+      '150g parmigiano reggiano',
+      '1 Tbsp white miso',
+      'Salt & pepper',
+      'Chopped basil'
+    ],
+    instructions: 'Slow cook chicken breast with crushed tomatoes, tomato paste, minced garlic, salt, Italian seasoning, pepper, onion, chili flakes, and parmesan on high 2-3 hrs or low 3-4 hrs. Cook pasta halfway. Blend cottage cheese, milk, cream cheese, parmesan, white miso, salt, pepper for sauce. Combine chicken, pasta, sauce. Top with chopped basil.',
+    reheating: 'Microwave 3-5 mins with 2-3 Tbsp milk'
+  },
+  {
+    id: 33,
+    name: 'Slow Cooker Birria',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Mexican',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 16,
+    macros: { calories: 175, protein: 28, carbs: 1, fat: 6 },
+    link: 'https://www.instagram.com/reel/C6UGskIJV4Q/',
+    ingredients: [
+      '2 onions, chopped',
+      '10 cloves garlic',
+      '20g avocado oil',
+      '10 guajillo chiles',
+      '3 ancho chiles',
+      '32oz beef bone broth',
+      '1 cup water',
+      '1 Tbsp salt',
+      '1 Tbsp cumin',
+      '1 Tbsp oregano',
+      '1 Tbsp black pepper',
+      '1 tsp paprika',
+      '90ml apple cider vinegar',
+      '240ml red enchilada sauce',
+      'Cilantro stems',
+      '64oz top sirloin, trimmed',
+      '3 bay leaves'
+    ],
+    instructions: 'Sauté onions and garlic in avocado oil. Toast guajillo and ancho chiles. Blend chiles with bone broth, water, salt, cumin, oregano, pepper, paprika, vinegar, red enchilada sauce, cilantro stems. Slow cook trimmed top sirloin in chile sauce with bay leaves on low 7-8 hrs. Shred beef.',
+    reheating: 'Microwave with 1/4 cup water for ~4 mins'
+  },
+  {
+    id: 34,
+    name: 'Chili Garlic Chicken Fried Rice',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Asian',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker + Oven',
+    servings: 10,
+    macros: { calories: 575, protein: 43, carbs: 67, fat: 16 },
+    link: 'https://www.instagram.com/reel/C45_4JEp0to/',
+    ingredients: [
+      '48oz chicken thighs',
+      '4 Tbsp chili garlic sauce',
+      '2 Tbsp soy sauce',
+      '3 Tbsp honey',
+      '1 Tbsp rice vinegar',
+      '1 Tbsp minced ginger',
+      'Salt & pepper',
+      '1400g day-old rice',
+      '4 Tbsp soy sauce',
+      '2 Tbsp fish sauce',
+      '3 Tbsp honey',
+      '2 Tbsp rice vinegar',
+      '2 Tbsp sesame oil',
+      '600g mixed frozen veggies',
+      '400g egg whites',
+      '6 eggs',
+      '2 Tbsp sesame oil',
+      'Green onions',
+      'Spicy mayo'
+    ],
+    instructions: 'Slow cook chicken thighs with chili garlic sauce, soy sauce, honey, rice vinegar, ginger, salt, pepper on high 2-3 hrs or low 3-4 hrs. Broil day-old rice seasoned with soy sauce, fish sauce, honey, rice vinegar, sesame oil until crispy. Add frozen veggies and broil. Mix with shredded chicken. Scramble egg whites and eggs in sesame oil, add to rice. Top with green onions and spicy mayo.',
+    reheating: 'Microwave 4-5 mins'
+  },
+  {
+    id: 35,
+    name: 'Spicy Steak Pasta',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Italian',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 10,
+    macros: { calories: 480, protein: 37, carbs: 63, fat: 9 },
+    link: 'https://www.instagram.com/reel/C3NrC_9r00V/',
+    ingredients: [
+      '1 shallot',
+      '8 cloves garlic',
+      '28oz fire roasted tomatoes',
+      '5 guajillo chiles',
+      '4 chile de arbol',
+      '2 tsp soy sauce',
+      '60g honey',
+      '1.5 Tbsp salt',
+      '2 tsp onion powder',
+      '2 tsp paprika',
+      '2 tsp black pepper',
+      '32oz cubed flank steak',
+      '300g Skyr',
+      '60g parmigiano reggiano',
+      '60g goat cheese',
+      '240ml milk',
+      'Red chili flakes',
+      'Chives',
+      '672g rigatoni'
+    ],
+    instructions: 'Blend shallot, garlic, fire roasted tomatoes, guajillo chiles, chile de arbol, soy sauce, honey, salt, onion powder, paprika, pepper into spicy sauce. Slow cook cubed flank steak in sauce on high 4-5 hrs or low 5-6 hrs. Cook rigatoni pasta halfway. Mix steak with creamy sauce made from Skyr, parmesan, goat cheese, milk, red chili flakes. Combine with pasta. Top with chives.',
+    reheating: 'Microwave 4 mins with 2-3 Tbsp milk'
+  },
+  {
+    id: 36,
+    name: 'Slow Cooker Buffalo Chicken Mac n Cheese',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'American',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Slow Cooker',
+    servings: 10,
+    macros: { calories: 480, protein: 35, carbs: 59, fat: 11 },
+    link: 'https://www.instagram.com/reel/CzrACMDugQ2/',
+    ingredients: [
+      '28oz boneless skinless chicken thighs, diced',
+      '80g buffalo sauce',
+      '30g Worcestershire',
+      '2 tsp garlic powder',
+      '2 tsp onion powder',
+      '1 tsp chicken bouillon',
+      '200ml water',
+      '672g pasta',
+      '600g 2% cottage cheese',
+      '150g 1/3 fat cream cheese',
+      '40g parmigiano reggiano',
+      '50g cheddar powder',
+      '120g buffalo sauce',
+      '60g honey',
+      '300ml milk',
+      'Salt and pepper'
+    ],
+    instructions: 'Slow cook diced chicken thighs with buffalo sauce, Worcestershire, garlic powder, onion powder, chicken bouillon, and water on high 3-4 hrs or low 6-8 hrs. Cook pasta halfway. Blend cottage cheese, cream cheese, parmesan, cheddar powder, buffalo sauce, honey, milk, salt, pepper for buffalo cheese sauce. Mix chicken and pasta with sauce. Cook 15-20 mins.',
+    reheating: 'Microwave 4 mins'
+  },
+  {
+    id: 37,
+    name: 'Macro-Friendly Cheesesteak Burritos',
+    mealPrep: true,
+    mealType: 'Lunch/Dinner',
+    genre: 'American',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Stovetop',
+    servings: 10,
+    macros: { calories: 390, protein: 34, carbs: 29, fat: 13 },
+    link: 'https://www.instagram.com/reel/C1H1AyfrWQE/',
+    ingredients: [
+      '3 red bell peppers',
+      '3 poblanos',
+      '4 jalapeños',
+      '1 large onion',
+      '1 Tbsp minced garlic',
+      'Salt',
+      '24oz skirt steak, trimmed',
+      'Salt & pepper',
+      '400g blended cottage cheese',
+      '80g low fat mozzarella',
+      '40g parmigiano reggiano',
+      'Garlic, pepper, chili powder',
+      '10 protein tortillas'
+    ],
+    instructions: 'Roast red bell peppers, poblanos, jalapeños, large onion with minced garlic and salt. Sear trimmed skirt steak seasoned with salt and pepper. Blend cottage cheese, low fat mozzarella, parmesan, garlic, pepper, chili powder for cheese sauce. Mix steak with roasted veggies and cheese sauce. Roll into protein tortillas.',
+    reheating: 'Microwave 2-3 mins'
+  },
+  {
+    id: 38,
+    name: 'Taco Mac n Cheese',
+    mealPrep: true,
+    mealType: 'Dinner',
+    genre: 'Mexican',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Stovetop',
+    servings: 5,
+    macros: { calories: 510, protein: 41, carbs: 62, fat: 12 },
+    link: 'https://www.instagram.com/reel/CtrXdLRMQ31/',
+    ingredients: [
+      '2 yellow bell peppers',
+      '2 red bell peppers',
+      '1 onion',
+      '16oz 93% beef',
+      '1 taco seasoning packet',
+      'Splash of water',
+      '50g red enchilada sauce',
+      '330g pasta',
+      '350g 2% blended cottage cheese',
+      '25g cheddar powder',
+      '50g low fat cheddar',
+      '10g nutritional yeast',
+      '50g 1% milk',
+      'Hot sauce'
+    ],
+    instructions: 'Cook yellow bell peppers, red bell peppers, and onion. Add 93% beef with taco seasoning and splash of water. Add red enchilada sauce. Cook pasta. Blend cottage cheese, cheddar powder, low fat cheddar, nutritional yeast, milk for cheese sauce. Mix beef mixture and pasta with cheese sauce. Add hot sauce to taste.',
+    reheating: 'Microwave 4 mins'
+  },
+  {
+    id: 39,
+    name: 'Nashville Hot Sliders',
+    mealPrep: false,
+    mealType: 'Dinner/Snack',
+    genre: 'American',
+    storage: 'Fresh - eat same day',
+    cookingMethod: 'Deep Fry',
+    servings: 10,
+    link: 'https://www.thegoldenbalance.com/recipes/nashvillehotsliders',
+    ingredients: [
+      '2 lbs chicken thighs',
+      '4 cups buttermilk',
+      '1/4 cup pickle juice',
+      '1/4 cup hot sauce',
+      '2 cups flour',
+      '1 cup cornstarch',
+      '1 cup EverCrisp',
+      'Spices',
+      '8-10 slider rolls',
+      'Spicy mayo',
+      'Sweet pickles'
+    ],
+    instructions: 'Marinate chicken in buttermilk, pickle juice, hot sauce. Dredge in flour/cornstarch/EverCrisp mix. Fry at 350°F. Make Nashville hot oil with spices. Dunk fried chicken. Assemble sliders with spicy mayo and pickles.',
+    reheating: 'Best fresh'
+  },
+  {
+    id: 40,
+    name: 'Lamb Chops',
+    mealPrep: false,
+    mealType: 'Dinner',
+    genre: 'Mediterranean',
+    storage: 'Fresh - eat same day',
+    cookingMethod: 'Grill',
+    servings: 8,
+    link: 'https://www.thegoldenbalance.com/recipes/lambchops',
+    ingredients: [
+      '2 racks of lamb',
+      '1/2 cup yogurt',
+      '2 Tbsp hot pepper paste',
+      'Garlic, lemon, honey',
+      'Spices'
+    ],
+    instructions: 'Cut lamb into chops. Marinate in yogurt, hot pepper paste, spices, honey. Grill until charred. Serve with yogurt-honey dip.',
+    reheating: 'Best fresh'
+  },
+  {
+    id: 41,
+    name: 'Cajun Chicken Alfredo',
+    mealPrep: false,
+    mealType: 'Dinner',
+    genre: 'American',
+    storage: 'Refrigerate 3-5 days',
+    cookingMethod: 'Stovetop/Oven',
+    servings: 4,
+    link: 'https://www.thegoldenbalance.com/recipes/cajunchickenalfredo',
+    ingredients: [
+      '2lbs chicken breast',
+      'Cajun seasoning',
+      '1 red bell pepper',
+      '1 yellow onion',
+      '1 jalapeño',
+      'Heavy cream',
+      'Parmesan',
+      'Pasta'
+    ],
+    instructions: 'Season chicken with Cajun spices. Sear, finish in oven. Sauté peppers, onions, jalapeño. Make alfredo with cream and parmesan. Toss pasta. Top with sliced chicken.',
+    reheating: 'Microwave with milk'
+  },
+  {
+    id: 42,
+    name: 'Chicken Tikka Masala (Golden Balance)',
+    mealPrep: false,
+    mealType: 'Dinner',
+    genre: 'Indian',
+    storage: 'Refrigerate 3-5 days',
+    cookingMethod: 'Oven/Stovetop',
+    servings: 5,
+    link: 'https://www.thegoldenbalance.com/recipes/chickentikkamasala',
+    ingredients: [
+      '2-3lbs chicken thighs',
+      'Yogurt',
+      'Tikka masala spices',
+      'Fire roasted tomatoes',
+      'Heavy cream'
+    ],
+    instructions: 'Marinate chicken. Roast at 400°F. Make masala sauce. Blend. Add cream. Serve with rice or naan.',
+    reheating: 'Microwave or stovetop'
+  },
+  {
+    id: 43,
+    name: 'Crunch Wrap Supreme',
+    mealPrep: false,
+    mealType: 'Lunch/Dinner',
+    genre: 'Mexican',
+    storage: 'Fresh - eat same day',
+    cookingMethod: 'Stovetop',
+    servings: 4,
+    link: 'https://www.thegoldenbalance.com/recipes/crunchwrapsupreme',
+    ingredients: [
+      '4 large tortillas',
+      '2 lbs ground beef',
+      'Taco seasoning',
+      'Nacho cheese',
+      'Tostadas',
+      'Sour cream',
+      'Lettuce',
+      'Tomatoes'
+    ],
+    instructions: 'Brown beef. Layer tortilla with beef, nacho cheese, tostada, sour cream, lettuce, tomatoes. Fold. Toast seam-side down.',
+    reheating: 'Best fresh'
+  },
+  {
+    id: 44,
+    name: 'Loaded Steak Potatoes',
+    mealPrep: false,
+    mealType: 'Dinner',
+    genre: 'American',
+    storage: 'Fresh - eat same day',
+    cookingMethod: 'Oven/Stovetop',
+    servings: 4,
+    link: 'https://www.thegoldenbalance.com/recipes/loadedsteakpotatoes',
+    ingredients: [
+      '4 large Russets',
+      '1 lb steak',
+      'Heavy cream',
+      'Mozzarella',
+      'Sour cream'
+    ],
+    instructions: 'Bake potatoes. Cube and sear steak. Make cream sauce. Scoop potato, mix with butter, spices, cheese, sour cream. Refill skins. Top with sauce and steak.',
+    reheating: 'Microwave'
+  },
+  {
+    id: 45,
+    name: 'Honey Chipotle Chicken Mac N Cheese',
+    mealPrep: false,
+    mealType: 'Dinner',
+    genre: 'American Fusion',
+    storage: 'Refrigerate 3-5 days',
+    cookingMethod: 'Stovetop/Oven',
+    servings: 4,
+    link: 'https://www.thegoldenbalance.com/recipes/honeychipotlechickenmacncheese',
+    ingredients: [
+      '2lbs chicken thighs',
+      'Buttermilk',
+      'Flour',
+      'Heavy cream',
+      'Cheddar',
+      'Pasta',
+      'Honey',
+      'Chipotle sauce'
+    ],
+    instructions: 'Marinate chicken. Make mac n cheese. Bake. Dredge and fry chicken. Toss in honey chipotle sauce. Pile over mac.',
+    reheating: 'Microwave or oven'
+  },
+  {
+    id: 46,
+    name: "Dave's Style Hot Chicken Tenders",
+    mealPrep: false,
+    mealType: 'Lunch/Dinner',
+    genre: 'American',
+    storage: 'Fresh - eat same day',
+    cookingMethod: 'Deep Fry',
+    servings: 6,
+    link: 'https://www.thegoldenbalance.com/recipes/davesstylechickentenders',
+    ingredients: [
+      '2 lbs chicken tenders',
+      'Buttermilk',
+      'Flour',
+      'Cornstarch',
+      'Sparkling water',
+      'Spicy seasoning'
+    ],
+    instructions: 'Marinate. Double dredge. Fry at 360°F then 375°F. Dust with spicy seasoning.',
+    reheating: 'Best fresh'
+  },
+  {
+    id: 47,
+    name: 'Cheesy Chicken Over Rice',
+    mealPrep: false,
+    mealType: 'Dinner',
+    genre: 'Latin',
+    storage: 'Refrigerate 3-5 days',
+    cookingMethod: 'Stovetop',
+    servings: 4,
+    link: 'https://www.thegoldenbalance.com/recipes/cheesychickenoverrice',
+    ingredients: [
+      '2 lbs chicken thighs',
+      'Onion',
+      'Bell pepper',
+      'Jalapeño',
+      'Jasmine rice',
+      'Cheese'
+    ],
+    instructions: 'Cook chicken with lime and honey. Sauté veggies. Add tomatoes, water, rice. Cover and cook. Top with chicken and cheese.',
+    reheating: 'Microwave'
+  },
+  {
+    id: 48,
+    name: 'The Best Guacamole',
+    mealPrep: false,
+    mealType: 'Appetizer/Side',
+    genre: 'Mexican',
+    storage: 'Fresh - eat same day',
+    cookingMethod: 'None',
+    servings: 4,
+    link: 'https://www.thegoldenbalance.com/recipes/guacamole',
+    ingredients: [
+      '3 avocados',
+      'Garlic',
+      'Serrano',
+      'Onion',
+      'Limes',
+      'Cilantro'
+    ],
+    instructions: 'Mash garlic, jalapeño, onion, lime, salt in molcajete. Add avocado, cilantro. Serve with fried corn tortilla chips.',
+    reheating: 'Best fresh'
+  },
+  {
+    id: 49,
+    name: 'Chili Garlic Pasta',
+    mealPrep: false,
+    mealType: 'Dinner',
+    genre: 'Italian Fusion',
+    storage: 'Refrigerate 3-5 days',
+    cookingMethod: 'Stovetop',
+    servings: 4,
+    link: 'https://www.thegoldenbalance.com/recipes/chiligarlicpasta',
+    ingredients: [
+      'Butter',
+      'Onion',
+      'Shallots',
+      'Chili oil',
+      'Garlic',
+      'Rice vinegar',
+      'Chili crunch',
+      'Heavy cream',
+      'Parmesan',
+      'Spaghetti'
+    ],
+    instructions: 'Sauté onions and shallots in butter with chili oil. Add garlic, rice vinegar, chili crunch. Pour in cream. Add parmesan. Toss with pasta.',
+    reheating: 'Stovetop with cream'
+  },
+  {
+    id: 50,
+    name: 'Jalapeño Smash Burger',
+    mealPrep: false,
+    mealType: 'Lunch/Dinner',
+    genre: 'American',
+    storage: 'Fresh - eat same day',
+    cookingMethod: 'Griddle',
+    servings: 2,
+    link: 'https://www.thegoldenbalance.com/recipes/jalapenosmashburger',
+    ingredients: [
+      '2 jalapeños',
+      '1 onion',
+      '16 oz ground beef',
+      'American cheese',
+      'Brioche buns'
+    ],
+    instructions: 'Slice jalapeños and onions. Form beef balls. Place on griddle, top with jalapeño-onion, smash. Flip, add cheese. Assemble.',
+    reheating: 'Best fresh'
+  },
+  {
+    id: 51,
+    name: 'Hot Honey Popcorn Chicken Mac N Cheese',
+    mealPrep: false,
+    mealType: 'Dinner',
+    genre: 'American',
+    storage: 'Refrigerate 3-5 days',
+    cookingMethod: 'Oven/Deep Fry',
+    servings: 6,
+    link: 'https://www.thegoldenbalance.com/recipes/hothoneychickenmacncheese',
+    ingredients: [
+      '2 lbs chicken',
+      'Buttermilk',
+      'Heavy cream',
+      'Cheddar',
+      'Pasta',
+      'Honey',
+      'Cayenne'
+    ],
+    instructions: 'Marinate chicken. Make mac n cheese. Bake. Fry chicken. Make hot honey. Toss chicken. Pile over mac.',
+    reheating: 'Microwave mac'
+  },
+  {
+    id: 52,
+    name: 'Chicken Shawarma For Weight Loss',
+    mealPrep: true,
+    mealType: 'Lunch/Dinner',
+    genre: 'Mediterranean',
+    storage: 'Refrigerate 3-5 days',
+    cookingMethod: 'Oven',
+    servings: 4,
+    link: 'https://www.thegoldenbalance.com/recipes/recipe-1-7psdy-gn6ck-cyzzm-kCUBG',
+    ingredients: [
+      'Chicken',
+      'Greek yogurt',
+      'Shawarma spices',
+      'Garlic',
+      'Pita'
+    ],
+    instructions: 'Marinate chicken. Roast at 400°F. Make toum. Wrap in pita.',
+    reheating: 'Microwave or toast'
+  },
+  {
+    id: 53,
+    name: 'Spicy Linguine Pasta',
+    mealPrep: false,
+    mealType: 'Dinner',
+    genre: 'Italian',
+    storage: 'Refrigerate 3-5 days',
+    cookingMethod: 'Stovetop',
+    servings: 4,
+    link: 'https://www.thegoldenbalance.com/recipes/recipe-1-7psdy',
+    ingredients: [
+      'Linguine',
+      'Shallots',
+      'Garlic',
+      'Olive oil',
+      'Tomato paste',
+      'Red pepper flakes',
+      'Heavy cream',
+      'Parmesan'
+    ],
+    instructions: 'Sauté shallots and garlic. Add tomato paste and red pepper. Pour in cream. Add parmesan. Toss with pasta.',
+    reheating: 'Stovetop with cream'
+  },
+  {
+    id: 54,
+    name: 'Honey Chipotle Chicken Sliders',
+    mealPrep: false,
+    mealType: 'Lunch/Dinner',
+    genre: 'American',
+    storage: 'Fresh - eat same day',
+    cookingMethod: 'Deep Fry',
+    servings: 8,
+    link: 'https://www.thegoldenbalance.com/recipes/recipe-blzks-nkr26-hzz5j-wjt47-3sm8f-nmswr-dtw8b',
+    ingredients: [
+      '2 lbs chicken',
+      'Buttermilk',
+      'Flour',
+      'Honey',
+      'Chipotle sauce',
+      'Slider buns'
+    ],
+    instructions: 'Marinate. Dredge. Fry. Make honey chipotle sauce. Brush chicken. Assemble sliders.',
+    reheating: 'Best fresh'
+  },
+  {
+    id: 55,
+    name: 'Chicken Bacon Ranch Alfredo',
+    mealPrep: false,
+    mealType: 'Dinner',
+    genre: 'American',
+    storage: 'Refrigerate 3-5 days',
+    cookingMethod: 'Stovetop/Oven',
+    servings: 6,
+    link: 'https://www.thegoldenbalance.com/recipes/recipe-c4tnn-cerkj',
+    ingredients: [
+      'Bacon',
+      'Chicken thighs',
+      'Heavy cream',
+      'Ranch seasoning',
+      'Parmesan',
+      'Spaghetti'
+    ],
+    instructions: 'Render bacon. Sear chicken. Finish in oven. Make alfredo with cream, bacon, ranch, parmesan. Toss with pasta.',
+    reheating: 'Microwave with cream'
+  },
+  {
+    id: 56,
+    name: 'One Pan Smokey Chicken Over Rice',
+    mealPrep: false,
+    mealType: 'Dinner',
+    genre: 'Middle Eastern',
+    storage: 'Refrigerate 3-5 days',
+    cookingMethod: 'Stovetop',
+    servings: 6,
+    link: 'https://www.thegoldenbalance.com/recipes/recipe-b59hf-d8rz8-s733w-2xkm9-rhtxm-6phwx-kk28s-mm7d3-ycax2-f45ej-rcece-t7pmr-58agw-fmsrj-9dmgb-7de68-dpp53-mjjyk-666jw-apgjc-k8mak-wryrg-p3kag',
+    ingredients: [
+      'Chicken thighs',
+      'Bell pepper',
+      'Onion',
+      'Jalapeño',
+      'Basmati rice',
+      'Chicken broth',
+      'Pine nuts'
+    ],
+    instructions: 'Sear chicken. Sauté veggies. Add rice, liquid, spices. Nestle chicken in. Cover and cook. Smoke with charcoal. Top with pine nuts.',
+    reheating: 'Microwave'
+  },
+  {
+    id: 57,
+    name: 'Tuna Sub Sandwich',
+    mealPrep: false,
+    mealType: 'Lunch',
+    genre: 'American',
+    storage: 'Refrigerate 1-2 days',
+    cookingMethod: 'None',
+    servings: 2,
+    link: 'https://www.thegoldenbalance.com/recipes/recipe-sm6hd-rxha7-gwnka-skmsm-nn5fa',
+    ingredients: [
+      'Canned tuna',
+      'Red onion',
+      'Celery',
+      'Mayo',
+      'Buffalo sauce',
+      'Hoagie rolls',
+      'Swiss cheese',
+      'Gouda'
+    ],
+    instructions: 'Mix tuna with onion, celery, mayo, buffalo sauce. Toast rolls with swiss. Add tuna, top with gouda. Broil.',
+    reheating: 'Toast in oven'
+  },
+  {
+    id: 58,
+    name: 'Chicken Caesar Wrap',
+    mealPrep: false,
+    mealType: 'Lunch',
+    genre: 'American',
+    storage: 'Fresh - eat same day',
+    cookingMethod: 'Stovetop',
+    servings: 2,
+    link: 'https://www.thegoldenbalance.com/recipes/recipe-zxwmt',
+    ingredients: [
+      'Chicken breast',
+      'Flour',
+      'Panko',
+      'Parmesan',
+      'Caesar salad',
+      'Tortillas',
+      'Tomatoes'
+    ],
+    instructions: 'Bread chicken. Fry. Make tomato sauce. Layer tortilla with sauce, chicken, caesar salad. Roll. Toast.',
+    reheating: 'Best fresh'
+  },
+  {
+    id: 59,
+    name: 'Garlic Parmesan Mashed Potatoes',
+    mealPrep: false,
+    mealType: 'Side',
+    genre: 'American',
+    storage: 'Refrigerate 3-5 days',
+    cookingMethod: 'Stovetop',
+    servings: 6,
+    link: 'https://www.thegoldenbalance.com/recipes/recipe-gwg5s-92r27-d7b43-rhklg-pwbdf-h4frh',
+    ingredients: [
+      'Yukon gold potatoes',
+      'Butter',
+      'Garlic',
+      'Rosemary',
+      'Heavy cream',
+      'Parmesan'
+    ],
+    instructions: 'Boil potatoes. Infuse butter with garlic and rosemary. Mash potatoes with butter and cream. Top with parmesan.',
+    reheating: 'Microwave with cream'
+  },
+  {
+    id: 60,
+    name: 'Steak Over Rice For Weight Loss',
+    mealPrep: true,
+    mealType: 'Lunch/Dinner',
+    genre: 'Asian Fusion',
+    storage: 'Refrigerate 3-5 days',
+    cookingMethod: 'Grill/Stovetop',
+    servings: 4,
+    link: 'https://www.thegoldenbalance.com/recipes/recipe-lmcx7-849r5-cbygx-3mbcl-7m9zr-dj59t-nf699-fzy4l-nyj4s-4hyc8-rae9m-49exa-esj7j-ny5y6',
+    ingredients: [
+      'Lean steak',
+      'Soy sauce',
+      'Oyster sauce',
+      'Green onions',
+      'Cilantro',
+      'Jalapeño',
+      'Red onion',
+      'Lime',
+      'Cilantro lime rice'
+    ],
+    instructions: 'Marinate steak. Grill. Mix herbs with lime and seasonings. Serve steak over rice, top with herb mixture.',
+    reheating: 'Microwave'
+  },
+  {
+    id: 61,
+    name: 'Japanese Style Egg Sandwich',
+    mealPrep: false,
+    mealType: 'Breakfast/Lunch',
+    genre: 'Japanese',
+    storage: 'Fresh - eat same day',
+    cookingMethod: 'Stovetop',
+    servings: 1,
+    link: 'https://www.thegoldenbalance.com/recipes/recipe-b59hf',
+    ingredients: [
+      '6 eggs',
+      'Kewpie mayo',
+      'Milk',
+      'Chives',
+      'White bread'
+    ],
+    instructions: 'Boil eggs. Smash with kewpie mayo, milk, chives. Heap onto white bread. Wrap and slice.',
+    reheating: 'Best fresh'
+  },
+  {
+    id: 62,
+    name: 'The Best Cajun Chicken Pasta',
+    mealPrep: false,
+    mealType: 'Dinner',
+    genre: 'American',
+    storage: 'Refrigerate 3-5 days',
+    cookingMethod: 'Stovetop/Oven',
+    servings: 4,
+    link: 'https://www.thegoldenbalance.com/recipes/recipe-n59za-z64sg-f28zk',
+    ingredients: [
+      '1 lb chicken breasts',
+      'Cajun seasoning',
+      '1 red bell pepper',
+      '1 yellow onion',
+      '1 jalapeño',
+      '½ cup chicken broth',
+      '1 cup heavy cream',
+      '⅓ cup parmesan',
+      '8 oz pasta'
+    ],
+    instructions: 'Season chicken with Cajun spices. Sear, finish in oven. Sauté peppers, onions, jalapeño with Cajun spices. Deglaze with broth. Add cream and parmesan. Toss with pasta. Top with sliced chicken.',
+    reheating: 'Microwave with cream'
+  },
+  {
+    id: 63,
+    name: 'Chicken and Rice Mandi-Style',
+    mealPrep: false,
+    mealType: 'Dinner',
+    genre: 'Middle Eastern',
+    storage: 'Refrigerate 3-5 days',
+    cookingMethod: 'Stovetop',
+    servings: 6,
+    link: 'https://www.thegoldenbalance.com/recipes/recipe-6w7jj-3xfds',
+    ingredients: [
+      '1 lb chicken legs',
+      'Olive oil',
+      'Spices',
+      'Jalapeño',
+      'Shallot',
+      'Whole spices',
+      'Basmati rice',
+      'Chicken stock'
+    ],
+    instructions: 'Season chicken. Sear. Sauté jalapeño, shallot, spices. Add rice, toast. Add stock. Nestle chicken. Cover and cook. Optionally smoke.',
+    reheating: 'Microwave'
+  },
+  {
+    id: 64,
+    name: 'Healthy Spaghetti Meal Prep',
+    mealPrep: true,
+    mealType: 'Lunch/Dinner',
+    genre: 'Italian',
+    storage: 'Freeze 3+ months',
+    cookingMethod: 'Stovetop',
+    servings: 6,
+    link: 'https://www.thegoldenbalance.com/recipes/recipe-d2r4p',
+    ingredients: [
+      'Bell pepper',
+      'Onion',
+      'Celery',
+      'Carrot',
+      'Garlic',
+      'Jalapeño',
+      'Tomato paste',
+      'Lean beef',
+      'Beef stock',
+      'Tomato sauce',
+      'Pasta'
+    ],
+    instructions: 'Food process veggies. Sauté with tomato paste and spices. Add beef. Add stock and tomato sauce. Simmer. Toss with pasta.',
+    reheating: 'Microwave'
+  },
+  {
+    id: 65,
+    name: 'Halal Cart Chicken Over Rice',
+    mealPrep: false,
+    mealType: 'Lunch/Dinner',
+    genre: 'Middle Eastern',
+    storage: 'Refrigerate 3-5 days',
+    cookingMethod: 'Stovetop',
+    servings: 4,
+    link: 'https://www.thegoldenbalance.com/recipes/recipe-title-mb3aa-zafs5',
+    ingredients: [
+      'Basmati rice',
+      'Ghee',
+      'Hot pepper paste',
+      'Chicken thighs',
+      'Spices',
+      'Sour cream',
+      'Mayo',
+      'Vinegar',
+      'Parsley',
+      'Lemon'
+    ],
+    instructions: 'Cook spiced red rice. Marinate and sear chicken. Make white sauce. Serve chicken over rice with lettuce, tomato, white sauce.',
+    reheating: 'Microwave'
+  },
+  {
+    id: 66,
+    name: 'Mango Habanero Chicken Tenders',
+    mealPrep: false,
+    mealType: 'Lunch/Dinner',
+    genre: 'American Fusion',
+    storage: 'Fresh - eat same day',
+    cookingMethod: 'Deep Fry',
+    servings: 4,
+    link: 'https://www.thegoldenbalance.com/recipes/recipe-4t9e3',
+    ingredients: [
+      '2 lbs chicken tenders',
+      'Flour',
+      'Cornstarch',
+      'Baking powder',
+      'Sparkling water',
+      'Habanero peppers',
+      'Mango pulp',
+      'Brown sugar',
+      'Lime'
+    ],
+    instructions: 'Marinate tenders. Double dredge. Fry at 360°F then 375°F. Blend mango habanero sauce. Brush chicken.',
+    reheating: 'Best fresh'
+  }
+];
 
         const Login = ({ onLogin }) => {
           const [pin, setPin] = useState('');
@@ -104,343 +1984,13 @@
                     <input type="text" value={pin} onChange={(e) => setPin(e.target.value)} placeholder="e.g., NizamFamily2025" className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" autoFocus />
                     {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
                   </div>
-                  <button type="submit" className="w-full gradient-bg text-white py-3 rounded-lg font-semibold hover:shadow-lg">Access Family Account</button>
+                  <button type="submit" className="w-full gradient-bg text-white py-3 rounded-lg font-semibold hover:shadow-lg">Access</button>
                 </form>
               </div>
             </div>
           );
         };
 
-        const LifeAdmin = () => {
-          const [familyPIN, setFamilyPIN] = useState(null);
-          const [activeTab, setActiveTab] = useState('recipes');
-          
-          // Load data from localStorage or seed
-          const [recipes, setRecipes] = useState(() => {
-            const saved = localStorage.getItem('recipes');
-            return saved ? JSON.parse(saved) : SEED_RECIPES;
-          });
-          
-          const [shows, setShows] = useState(() => {
-            const saved = localStorage.getItem('shows');
-            return saved ? JSON.parse(saved) : SEED_SHOWS;
-          });
-          
-          const [choreTemplates, setChoreTemplates] = useState(() => {
-            const saved = localStorage.getItem('choreTemplates');
-            return saved ? JSON.parse(saved) : SEED_CHORES;
-          });
-
-          const [groceryList, setGroceryList] = useState([]);
-          const [searchQuery, setSearchQuery] = useState('');
-          const [recipeFilter, setRecipeFilter] = useState({ mealPrep: 'all', genre: 'all' });
-          const [showFilter, setShowFilter] = useState('all');
-          const [selectedRecipe, setSelectedRecipe] = useState(null);
-          const [showAddRecipe, setShowAddRecipe] = useState(false);
-          const [showAddShow, setShowAddShow] = useState(false);
-          const [showAddChore, setShowAddChore] = useState(false);
-          const [editingItem, setEditingItem] = useState(null);
-
-          // Save to localStorage whenever data changes
-          useEffect(() => {
-            localStorage.setItem('recipes', JSON.stringify(recipes));
-          }, [recipes]);
-
-          useEffect(() => {
-            localStorage.setItem('shows', JSON.stringify(shows));
-          }, [shows]);
-
-          useEffect(() => {
-            localStorage.setItem('choreTemplates', JSON.stringify(choreTemplates));
-          }, [choreTemplates]);
-
-          useEffect(() => {
-            const storedPIN = localStorage.getItem('familyPIN');
-            if (storedPIN) setFamilyPIN(storedPIN);
-          }, []);
-
-          const handleLogout = () => {
-            if (confirm('Logout?')) {
-              localStorage.removeItem('familyPIN');
-              setFamilyPIN(null);
-            }
-          };
-
-          // Recipe CRUD
-          const addRecipe = (recipe) => {
-            const newRecipe = { ...recipe, id: Date.now() };
-            setRecipes([...recipes, newRecipe]);
-            setShowAddRecipe(false);
-          };
-
-          const updateRecipe = (id, updatedRecipe) => {
-            setRecipes(recipes.map(r => r.id === id ? { ...updatedRecipe, id } : r));
-            setEditingItem(null);
-          };
-
-          const deleteRecipe = (id) => {
-            if (confirm('Delete this recipe?')) {
-              setRecipes(recipes.filter(r => r.id !== id));
-            }
-          };
-
-          // Show CRUD
-          const addShow = (show) => {
-            const newShow = { ...show, id: Date.now() };
-            setShows([...shows, newShow]);
-            setShowAddShow(false);
-          };
-
-          const updateShow = (id, updatedShow) => {
-            setShows(shows.map(s => s.id === id ? { ...updatedShow, id } : s));
-            setEditingItem(null);
-          };
-
-          const deleteShow = (id) => {
-            if (confirm('Delete this show?')) {
-              setShows(shows.filter(s => s.id !== id));
-            }
-          };
-
-          // Chore CRUD
-          const addChoreTemplate = (chore) => {
-            const newChore = { ...chore, id: Date.now() };
-            setChoreTemplates([...choreTemplates, newChore]);
-            setShowAddChore(false);
-          };
-
-          const updateChoreTemplate = (id, updatedChore) => {
-            setChoreTemplates(choreTemplates.map(c => c.id === id ? { ...updatedChore, id } : c));
-            setEditingItem(null);
-          };
-
-          const deleteChoreTemplate = (id) => {
-            if (confirm('Delete this chore?')) {
-              setChoreTemplates(choreTemplates.filter(c => c.id !== id));
-            }
-          };
-
-          const filteredRecipes = recipes.filter(r => {
-            if (recipeFilter.mealPrep !== 'all' && r.mealPrep.toString() !== recipeFilter.mealPrep) return false;
-            if (recipeFilter.genre !== 'all' && r.genre !== recipeFilter.genre) return false;
-            if (searchQuery && !r.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
-            return true;
-          });
-
-          let displayShows = showFilter === 'all' ? shows : showFilter === 'yahya' ? shows.filter(s => s.age.includes('5+') || s.age.includes('7+') || s.age.includes('8+')) : shows.filter(s => s.age.includes('2+') || s.age.includes('3+'));
-          
-          if (searchQuery) displayShows = displayShows.filter(s => s.name.toLowerCase().includes(searchQuery.toLowerCase()));
-
-          if (!familyPIN) return <Login onLogin={setFamilyPIN} />;
-
-          return (
-            <div className="flex flex-col h-screen bg-gray-50">
-              <div className="gradient-bg text-white p-4 shadow-lg">
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h1 className="text-2xl font-bold">Life Admin</h1>
-                    <p className="text-sm opacity-90">✓ {recipes.length} recipes • {shows.length} shows • {choreTemplates.length} chores</p>
-                  </div>
-                  <button onClick={handleLogout} className="p-2 hover:bg-white/20 rounded-lg"><LogOut size={20} /></button>
-                </div>
-              </div>
-
-              <div className="flex bg-white border-b overflow-x-auto">
-                <button onClick={() => setActiveTab('recipes')} className={`flex-1 min-w-[70px] py-3 px-2 flex flex-col items-center gap-1 text-xs ${activeTab === 'recipes' ? 'bg-blue-50 text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'}`}>
-                  <ChefHat size={18} />
-                  <span>Recipes</span>
-                </button>
-                <button onClick={() => setActiveTab('shows')} className={`flex-1 min-w-[70px] py-3 px-2 flex flex-col items-center gap-1 text-xs ${activeTab === 'shows' ? 'bg-blue-50 text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'}`}>
-                  <Tv size={18} />
-                  <span>Shows</span>
-                </button>
-                <button onClick={() => setActiveTab('chores')} className={`flex-1 min-w-[70px] py-3 px-2 flex flex-col items-center gap-1 text-xs ${activeTab === 'chores' ? 'bg-blue-50 text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'}`}>
-                  <Trash2 size={18} />
-                  <span>Chores</span>
-                </button>
-                <button onClick={() => setActiveTab('grocery')} className={`flex-1 min-w-[70px] py-3 px-2 flex flex-col items-center gap-1 text-xs ${activeTab === 'grocery' ? 'bg-blue-50 text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'}`}>
-                  <ShoppingCart size={18} />
-                  <span>Grocery</span>
-                </button>
-              </div>
-
-              <div className="flex-1 overflow-y-auto p-4">
-                {activeTab === 'recipes' && (
-                  <div>
-                    <div className="flex justify-between items-center mb-4">
-                      <h2 className="text-2xl font-bold">Recipes ({filteredRecipes.length})</h2>
-                      <button onClick={() => setShowAddRecipe(true)} className="gradient-bg text-white px-4 py-2 rounded-lg flex items-center gap-2">
-                        <Plus size={20} />
-                        Add Recipe
-                      </button>
-                    </div>
-
-                    <input type="text" placeholder="Search recipes..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full p-2 border rounded-lg mb-3" />
-
-                    <div className="grid grid-cols-2 gap-2 mb-4">
-                      <select value={recipeFilter.mealPrep} onChange={(e) => setRecipeFilter({...recipeFilter, mealPrep: e.target.value})} className="p-2 border rounded-lg">
-                        <option value="all">All</option>
-                        <option value="true">Meal Prep</option>
-                        <option value="false">Fresh</option>
-                      </select>
-                      <select value={recipeFilter.genre} onChange={(e) => setRecipeFilter({...recipeFilter, genre: e.target.value})} className="p-2 border rounded-lg">
-                        <option value="all">All Cuisines</option>
-                        <option value="Mexican">Mexican</option>
-                        <option value="Italian">Italian</option>
-                        <option value="Indian">Indian</option>
-                        <option value="American">American</option>
-                      </select>
-                    </div>
-
-                    <div className="space-y-3">
-                      {filteredRecipes.map(recipe => (
-                        <div key={recipe.id} className="bg-white p-4 rounded-lg shadow border">
-                          <div className="flex justify-between items-start mb-2">
-                            <h3 className="font-bold text-lg cursor-pointer" onClick={() => setSelectedRecipe(recipe)}>{recipe.name}</h3>
-                            <div className="flex gap-2">
-                              <button onClick={() => setEditingItem({ type: 'recipe', data: recipe })} className="text-blue-600 p-1"><Edit size={18} /></button>
-                              <button onClick={() => deleteRecipe(recipe.id)} className="text-red-600 p-1"><Trash2 size={18} /></button>
-                            </div>
-                          </div>
-                          <p className="text-sm text-gray-600">{recipe.genre} • {recipe.mealType} • Serves {recipe.servings}</p>
-                          {recipe.macros?.calories && <p className="text-xs text-gray-500">🔥 {recipe.macros.calories} cal • 💪 {recipe.macros.protein}g protein</p>}
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Add Recipe Modal */}
-                    {showAddRecipe && <RecipeForm onSave={addRecipe} onCancel={() => setShowAddRecipe(false)} />}
-                    
-                    {/* Edit Recipe Modal */}
-                    {editingItem?.type === 'recipe' && <RecipeForm recipe={editingItem.data} onSave={(updated) => updateRecipe(editingItem.data.id, updated)} onCancel={() => setEditingItem(null)} />}
-
-                    {/* View Recipe Modal */}
-                    {selectedRecipe && (
-                      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" onClick={() => setSelectedRecipe(null)}>
-                        <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6" onClick={(e) => e.stopPropagation()}>
-                          <div className="flex justify-between items-start mb-4">
-                            <h2 className="text-2xl font-bold">{selectedRecipe.name}</h2>
-                            <button onClick={() => setSelectedRecipe(null)} className="text-gray-500"><X size={24} /></button>
-                          </div>
-                          <div className="space-y-4">
-                            <div>
-                              <h3 className="font-bold">Details</h3>
-                              <p className="text-sm">Serves {selectedRecipe.servings} • {selectedRecipe.cookingMethod} • {selectedRecipe.storage}</p>
-                            </div>
-                            {selectedRecipe.ingredients && (
-                              <div>
-                                <h3 className="font-bold">Ingredients</h3>
-                                <ul className="text-sm space-y-1">
-                                  {selectedRecipe.ingredients.map((ing, i) => <li key={i}>• {ing}</li>)}
-                                </ul>
-                              </div>
-                            )}
-                            {selectedRecipe.instructions && (
-                              <div>
-                                <h3 className="font-bold">Instructions</h3>
-                                <p className="text-sm">{selectedRecipe.instructions}</p>
-                              </div>
-                            )}
-                            {selectedRecipe.link && <a href={selectedRecipe.link} target="_blank" className="inline-block gradient-bg text-white px-4 py-2 rounded-lg">View Original</a>}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {activeTab === 'shows' && (
-                  <div>
-                    <div className="flex justify-between items-center mb-4">
-                      <h2 className="text-2xl font-bold">TV Shows ({displayShows.length})</h2>
-                      <button onClick={() => setShowAddShow(true)} className="gradient-bg text-white px-4 py-2 rounded-lg flex items-center gap-2">
-                        <Plus size={20} />
-                        Add Show
-                      </button>
-                    </div>
-
-                    <div className="mb-4 space-y-3">
-                      <div className="flex gap-2">
-                        <button onClick={() => setShowFilter('all')} className={`flex-1 py-2 rounded-lg ${showFilter === 'all' ? 'gradient-bg text-white' : 'bg-gray-200'}`}>All</button>
-                        <button onClick={() => setShowFilter('yahya')} className={`flex-1 py-2 rounded-lg ${showFilter === 'yahya' ? 'gradient-bg text-white' : 'bg-gray-200'}`}>Yahya</button>
-                        <button onClick={() => setShowFilter('sofiya')} className={`flex-1 py-2 rounded-lg ${showFilter === 'sofiya' ? 'gradient-bg text-white' : 'bg-gray-200'}`}>Sofiya</button>
-                      </div>
-                      <input type="text" placeholder="Search shows..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full p-2 border rounded-lg" />
-                    </div>
-
-                    <div className="space-y-2">
-                      {displayShows.map(show => (
-                        <div key={show.id} className="bg-white p-3 rounded-lg shadow border">
-                          <div className="flex justify-between items-start mb-2">
-                            <div className="flex-1">
-                              <div className="flex justify-between items-start">
-                                <span className="font-medium">{show.name}</span>
-                                <div className="flex gap-2">
-                                  <button onClick={() => setEditingItem({ type: 'show', data: show })} className="text-blue-600"><Edit size={16} /></button>
-                                  <button onClick={() => deleteShow(show.id)} className="text-red-600"><Trash2 size={16} /></button>
-                                </div>
-                              </div>
-                              <span className="text-xs bg-gray-200 px-2 py-1 rounded">{show.platform}</span>
-                            </div>
-                          </div>
-                          <p className="text-xs text-gray-600">{show.teaches}</p>
-                          <div className="flex gap-2 mt-2">
-                            <span className="text-xs px-2 py-1 rounded-full bg-blue-100 text-blue-800">{show.category}</span>
-                            <span className="text-xs px-2 py-1 rounded-full bg-gray-100">{show.age}</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {showAddShow && <ShowForm onSave={addShow} onCancel={() => setShowAddShow(false)} />}
-                    {editingItem?.type === 'show' && <ShowForm show={editingItem.data} onSave={(updated) => updateShow(editingItem.data.id, updated)} onCancel={() => setEditingItem(null)} />}
-                  </div>
-                )}
-
-                {activeTab === 'chores' && (
-                  <div>
-                    <div className="flex justify-between items-center mb-4">
-                      <h2 className="text-2xl font-bold">Chore Templates ({choreTemplates.length})</h2>
-                      <button onClick={() => setShowAddChore(true)} className="gradient-bg text-white px-4 py-2 rounded-lg flex items-center gap-2">
-                        <Plus size={20} />
-                        Add Chore
-                      </button>
-                    </div>
-
-                    <div className="space-y-2">
-                      {choreTemplates.map(chore => (
-                        <div key={chore.id} className="bg-white p-3 rounded-lg shadow border">
-                          <div className="flex justify-between items-start">
-                            <div className="flex-1">
-                              <h3 className="font-medium">{chore.name}</h3>
-                              <p className="text-xs text-gray-600">{chore.frequency} • {chore.assignees.join(', ')}</p>
-                            </div>
-                            <div className="flex gap-2">
-                              <button onClick={() => setEditingItem({ type: 'chore', data: chore })} className="text-blue-600"><Edit size={16} /></button>
-                              <button onClick={() => deleteChoreTemplate(chore.id)} className="text-red-600"><Trash2 size={16} /></button>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {showAddChore && <ChoreForm onSave={addChoreTemplate} onCancel={() => setShowAddChore(false)} />}
-                    {editingItem?.type === 'chore' && <ChoreForm chore={editingItem.data} onSave={(updated) => updateChoreTemplate(editingItem.data.id, updated)} onCancel={() => setEditingItem(null)} />}
-                  </div>
-                )}
-
-                {activeTab === 'grocery' && (
-                  <div>
-                    <h2 className="text-2xl font-bold mb-4">Grocery List</h2>
-                    <p className="text-gray-600">Coming soon - meal planning integration</p>
-                  </div>
-                )}
-              </div>
-            </div>
-          );
-        };
-
-        // Recipe Form Component
         const RecipeForm = ({ recipe, onSave, onCancel }) => {
           const [formData, setFormData] = useState(recipe || {
             name: '',
@@ -472,12 +2022,17 @@
             setFormData({ ...formData, ingredients: newIngredients });
           };
 
+          const removeIngredient = (index) => {
+            const newIngredients = formData.ingredients.filter((_, i) => i !== index);
+            setFormData({ ...formData, ingredients: newIngredients });
+          };
+
           return (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" onClick={onCancel}>
               <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6" onClick={(e) => e.stopPropagation()}>
                 <h2 className="text-2xl font-bold mb-4">{recipe ? 'Edit Recipe' : 'Add Recipe'}</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <input type="text" placeholder="Recipe Name" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full p-2 border rounded-lg" required />
+                  <input type="text" placeholder="Recipe Name *" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full p-2 border rounded-lg" required />
                   
                   <div className="grid grid-cols-2 gap-2">
                     <select value={formData.genre} onChange={(e) => setFormData({...formData, genre: e.target.value})} className="p-2 border rounded-lg">
@@ -487,17 +2042,13 @@
                       <option>American</option>
                       <option>Asian</option>
                       <option>Mediterranean</option>
+                      <option>Middle Eastern</option>
+                      <option>Thai</option>
                     </select>
-                    <select value={formData.mealType} onChange={(e) => setFormData({...formData, mealType: e.target.value})} className="p-2 border rounded-lg">
-                      <option>Breakfast</option>
-                      <option>Lunch</option>
-                      <option>Dinner</option>
-                      <option>Lunch/Dinner</option>
-                      <option>Snack</option>
-                    </select>
+                    <input type="text" placeholder="Meal Type" value={formData.mealType} onChange={(e) => setFormData({...formData, mealType: e.target.value})} className="p-2 border rounded-lg" />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-3 gap-2">
                     <input type="number" placeholder="Servings" value={formData.servings} onChange={(e) => setFormData({...formData, servings: e.target.value})} className="p-2 border rounded-lg" />
                     <select value={formData.cookingMethod} onChange={(e) => setFormData({...formData, cookingMethod: e.target.value})} className="p-2 border rounded-lg">
                       <option>Stovetop</option>
@@ -506,7 +2057,9 @@
                       <option>Sheet Pan</option>
                       <option>Grill</option>
                       <option>Air Fryer</option>
+                      <option>Deep Fry</option>
                     </select>
+                    <input type="text" placeholder="Storage" value={formData.storage} onChange={(e) => setFormData({...formData, storage: e.target.value})} className="p-2 border rounded-lg" />
                   </div>
 
                   <label className="flex items-center gap-2">
@@ -514,14 +2067,19 @@
                     <span>Meal Prep Friendly</span>
                   </label>
 
-                  <input type="text" placeholder="Storage (e.g., Freeze 3+ months)" value={formData.storage} onChange={(e) => setFormData({...formData, storage: e.target.value})} className="w-full p-2 border rounded-lg" />
-
                   <div>
                     <label className="font-bold block mb-2">Ingredients</label>
                     {formData.ingredients.map((ing, i) => (
-                      <input key={i} type="text" value={ing} onChange={(e) => updateIngredient(i, e.target.value)} placeholder={`Ingredient ${i + 1}`} className="w-full p-2 border rounded-lg mb-2" />
+                      <div key={i} className="flex gap-2 mb-2">
+                        <input type="text" value={ing} onChange={(e) => updateIngredient(i, e.target.value)} placeholder={`Ingredient ${i + 1}`} className="flex-1 p-2 border rounded-lg" />
+                        {formData.ingredients.length > 1 && (
+                          <button type="button" onClick={() => removeIngredient(i)} className="text-red-600 px-2"><Trash2 size={20} /></button>
+                        )}
+                      </div>
                     ))}
-                    <button type="button" onClick={addIngredient} className="text-blue-600 text-sm">+ Add Ingredient</button>
+                    <button type="button" onClick={addIngredient} className="text-blue-600 text-sm flex items-center gap-1">
+                      <Plus size={16} /> Add Ingredient
+                    </button>
                   </div>
 
                   <textarea placeholder="Instructions" value={formData.instructions} onChange={(e) => setFormData({...formData, instructions: e.target.value})} className="w-full p-2 border rounded-lg" rows="3"></textarea>
@@ -531,7 +2089,7 @@
                   <input type="url" placeholder="Recipe Link (optional)" value={formData.link} onChange={(e) => setFormData({...formData, link: e.target.value})} className="w-full p-2 border rounded-lg" />
 
                   <div className="flex gap-2">
-                    <button type="submit" className="flex-1 gradient-bg text-white py-2 rounded-lg">Save Recipe</button>
+                    <button type="submit" className="flex-1 gradient-bg text-white py-2 rounded-lg">Save</button>
                     <button type="button" onClick={onCancel} className="flex-1 bg-gray-200 py-2 rounded-lg">Cancel</button>
                   </div>
                 </form>
@@ -540,140 +2098,169 @@
           );
         };
 
-        // Show Form Component
-        const ShowForm = ({ show, onSave, onCancel }) => {
-          const [formData, setFormData] = useState(show || {
-            name: '',
-            platform: 'Netflix',
-            category: 'Classic',
-            age: '5+',
-            teaches: ''
+        const LifeAdmin = () => {
+          const [familyPIN, setFamilyPIN] = useState(null);
+          const [activeTab, setActiveTab] = useState('recipes');
+          
+          const [recipes, setRecipes] = useState(() => {
+            const saved = localStorage.getItem('recipes');
+            if (saved) return JSON.parse(saved);
+            localStorage.setItem('recipes', JSON.stringify(INITIAL_RECIPES));
+            return INITIAL_RECIPES;
           });
 
-          const handleSubmit = (e) => {
-            e.preventDefault();
-            onSave(formData);
-          };
+          const [searchQuery, setSearchQuery] = useState('');
+          const [recipeFilter, setRecipeFilter] = useState({ mealPrep: 'all', genre: 'all' });
+          const [selectedRecipe, setSelectedRecipe] = useState(null);
+          const [showAddRecipe, setShowAddRecipe] = useState(false);
+          const [editingRecipe, setEditingRecipe] = useState(null);
 
-          return (
-            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" onClick={onCancel}>
-              <div className="bg-white rounded-lg max-w-md w-full p-6" onClick={(e) => e.stopPropagation()}>
-                <h2 className="text-2xl font-bold mb-4">{show ? 'Edit Show' : 'Add Show'}</h2>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <input type="text" placeholder="Show Name" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full p-2 border rounded-lg" required />
-                  
-                  <select value={formData.platform} onChange={(e) => setFormData({...formData, platform: e.target.value})} className="w-full p-2 border rounded-lg">
-                    <option>Netflix</option>
-                    <option>Disney+</option>
-                    <option>PBS Kids</option>
-                    <option>Paramount+</option>
-                    <option>Prime</option>
-                    <option>HBO Max</option>
-                    <option>Apple TV+</option>
-                    <option>YouTube</option>
-                  </select>
+          useEffect(() => {
+            localStorage.setItem('recipes', JSON.stringify(recipes));
+          }, [recipes]);
 
-                  <div className="grid grid-cols-2 gap-2">
-                    <select value={formData.category} onChange={(e) => setFormData({...formData, category: e.target.value})} className="p-2 border rounded-lg">
-                      <option>Classic</option>
-                      <option>Science</option>
-                      <option>Math</option>
-                      <option>Reading</option>
-                      <option>Social</option>
-                      <option>Adventure</option>
-                    </select>
-                    <select value={formData.age} onChange={(e) => setFormData({...formData, age: e.target.value})} className="p-2 border rounded-lg">
-                      <option>2+</option>
-                      <option>3+</option>
-                      <option>5+</option>
-                      <option>7+</option>
-                      <option>8+</option>
-                    </select>
-                  </div>
+          useEffect(() => {
+            const storedPIN = localStorage.getItem('familyPIN');
+            if (storedPIN) setFamilyPIN(storedPIN);
+          }, []);
 
-                  <input type="text" placeholder="What it teaches" value={formData.teaches} onChange={(e) => setFormData({...formData, teaches: e.target.value})} className="w-full p-2 border rounded-lg" />
-
-                  <div className="flex gap-2">
-                    <button type="submit" className="flex-1 gradient-bg text-white py-2 rounded-lg">Save Show</button>
-                    <button type="button" onClick={onCancel} className="flex-1 bg-gray-200 py-2 rounded-lg">Cancel</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          );
-        };
-
-        // Chore Form Component
-        const ChoreForm = ({ chore, onSave, onCancel }) => {
-          const [formData, setFormData] = useState(chore || {
-            name: '',
-            frequency: 'daily',
-            day: 0,
-            assignees: ['Nizam'],
-            time: 'morning'
-          });
-
-          const handleSubmit = (e) => {
-            e.preventDefault();
-            onSave(formData);
-          };
-
-          const toggleAssignee = (person) => {
-            if (formData.assignees.includes(person)) {
-              setFormData({...formData, assignees: formData.assignees.filter(a => a !== person)});
-            } else {
-              setFormData({...formData, assignees: [...formData.assignees, person]});
+          const handleLogout = () => {
+            if (confirm('Logout?')) {
+              localStorage.removeItem('familyPIN');
+              setFamilyPIN(null);
             }
           };
 
+          const addRecipe = (recipe) => {
+            const newRecipe = { ...recipe, id: Date.now() };
+            setRecipes([...recipes, newRecipe]);
+            setShowAddRecipe(false);
+          };
+
+          const updateRecipe = (id, updatedRecipe) => {
+            setRecipes(recipes.map(r => r.id === id ? { ...updatedRecipe, id } : r));
+            setEditingRecipe(null);
+          };
+
+          const deleteRecipe = (id) => {
+            if (confirm('Delete this recipe?')) {
+              setRecipes(recipes.filter(r => r.id !== id));
+            }
+          };
+
+          const filteredRecipes = recipes.filter(r => {
+            if (recipeFilter.mealPrep !== 'all' && r.mealPrep.toString() !== recipeFilter.mealPrep) return false;
+            if (recipeFilter.genre !== 'all' && r.genre !== recipeFilter.genre) return false;
+            if (searchQuery && !r.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
+            return true;
+          });
+
+          if (!familyPIN) return <Login onLogin={setFamilyPIN} />;
+
           return (
-            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" onClick={onCancel}>
-              <div className="bg-white rounded-lg max-w-md w-full p-6" onClick={(e) => e.stopPropagation()}>
-                <h2 className="text-2xl font-bold mb-4">{chore ? 'Edit Chore' : 'Add Chore'}</h2>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <input type="text" placeholder="Chore Name" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full p-2 border rounded-lg" required />
-                  
-                  <select value={formData.frequency} onChange={(e) => setFormData({...formData, frequency: e.target.value})} className="w-full p-2 border rounded-lg">
-                    <option value="daily">Daily</option>
-                    <option value="weekly">Weekly</option>
-                  </select>
-
-                  {formData.frequency === 'weekly' && (
-                    <select value={formData.day} onChange={(e) => setFormData({...formData, day: parseInt(e.target.value)})} className="w-full p-2 border rounded-lg">
-                      <option value="0">Sunday</option>
-                      <option value="1">Monday</option>
-                      <option value="2">Tuesday</option>
-                      <option value="3">Wednesday</option>
-                      <option value="4">Thursday</option>
-                      <option value="5">Friday</option>
-                      <option value="6">Saturday</option>
-                    </select>
-                  )}
-
-                  {formData.frequency === 'daily' && (
-                    <select value={formData.time} onChange={(e) => setFormData({...formData, time: e.target.value})} className="w-full p-2 border rounded-lg">
-                      <option value="morning">Morning</option>
-                      <option value="evening">Evening</option>
-                    </select>
-                  )}
-
+            <div className="flex flex-col h-screen bg-gray-50">
+              <div className="gradient-bg text-white p-4 shadow-lg">
+                <div className="flex justify-between items-center">
                   <div>
-                    <label className="font-bold block mb-2">Assignees</label>
-                    <div className="space-y-2">
-                      {['Nizam', 'Rabika', 'Yahya', 'Sofiya'].map(person => (
-                        <label key={person} className="flex items-center gap-2">
-                          <input type="checkbox" checked={formData.assignees.includes(person)} onChange={() => toggleAssignee(person)} />
-                          <span>{person}</span>
-                        </label>
-                      ))}
+                    <h1 className="text-2xl font-bold">Life Admin</h1>
+                    <p className="text-sm opacity-90">✓ {recipes.length} recipes saved</p>
+                  </div>
+                  <button onClick={handleLogout} className="p-2 hover:bg-white/20 rounded-lg"><LogOut size={20} /></button>
+                </div>
+              </div>
+
+              <div className="flex-1 overflow-y-auto p-4">
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-2xl font-bold">Recipes ({filteredRecipes.length})</h2>
+                  <button onClick={() => setShowAddRecipe(true)} className="gradient-bg text-white px-4 py-2 rounded-lg flex items-center gap-2">
+                    <Plus size={20} />
+                    Add Recipe
+                  </button>
+                </div>
+
+                <input type="text" placeholder="Search recipes..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full p-2 border rounded-lg mb-3" />
+
+                <div className="grid grid-cols-2 gap-2 mb-4">
+                  <select value={recipeFilter.mealPrep} onChange={(e) => setRecipeFilter({...recipeFilter, mealPrep: e.target.value})} className="p-2 border rounded-lg text-sm">
+                    <option value="all">All</option>
+                    <option value="true">Meal Prep</option>
+                    <option value="false">Fresh</option>
+                  </select>
+                  <select value={recipeFilter.genre} onChange={(e) => setRecipeFilter({...recipeFilter, genre: e.target.value})} className="p-2 border rounded-lg text-sm">
+                    <option value="all">All Cuisines</option>
+                    <option value="Mexican">Mexican</option>
+                    <option value="Italian">Italian</option>
+                    <option value="Indian">Indian</option>
+                    <option value="American">American</option>
+                  </select>
+                </div>
+
+                <div className="space-y-3">
+                  {filteredRecipes.map(recipe => (
+                    <div key={recipe.id} className="bg-white p-4 rounded-lg shadow border">
+                      <div className="flex justify-between items-start mb-2">
+                        <h3 className="font-bold text-lg cursor-pointer" onClick={() => setSelectedRecipe(recipe)}>{recipe.name}</h3>
+                        <div className="flex gap-2">
+                          <button onClick={() => setEditingRecipe(recipe)} className="text-blue-600 p-1"><Edit size={18} /></button>
+                          <button onClick={() => deleteRecipe(recipe.id)} className="text-red-600 p-1"><Trash2 size={18} /></button>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-600">{recipe.genre} • {recipe.mealType} • Serves {recipe.servings}</p>
+                      {recipe.macros?.calories && <p className="text-xs text-gray-500 mt-1">🔥 {recipe.macros.calories} cal • 💪 {recipe.macros.protein}g protein</p>}
+                    </div>
+                  ))}
+                </div>
+
+                {showAddRecipe && <RecipeForm onSave={addRecipe} onCancel={() => setShowAddRecipe(false)} />}
+                {editingRecipe && <RecipeForm recipe={editingRecipe} onSave={(updated) => updateRecipe(editingRecipe.id, updated)} onCancel={() => setEditingRecipe(null)} />}
+
+                {selectedRecipe && (
+                  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" onClick={() => setSelectedRecipe(null)}>
+                    <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6" onClick={(e) => e.stopPropagation()}>
+                      <div className="flex justify-between items-start mb-4">
+                        <h2 className="text-2xl font-bold">{selectedRecipe.name}</h2>
+                        <button onClick={() => setSelectedRecipe(null)} className="text-gray-500"><X size={24} /></button>
+                      </div>
+                      <div className="space-y-4">
+                        <div>
+                          <p className="text-sm font-semibold text-gray-600">
+                            {selectedRecipe.genre} • {selectedRecipe.mealType}<br/>
+                            Serves {selectedRecipe.servings} • {selectedRecipe.cookingMethod} • {selectedRecipe.storage}
+                          </p>
+                        </div>
+                        {selectedRecipe.macros?.calories && (
+                          <div className="flex gap-4 text-sm">
+                            <span>🔥 {selectedRecipe.macros.calories} cal</span>
+                            <span>💪 {selectedRecipe.macros.protein}g protein</span>
+                            <span>🍞 {selectedRecipe.macros.carbs}g carbs</span>
+                            <span>🥑 {selectedRecipe.macros.fat}g fat</span>
+                          </div>
+                        )}
+                        {selectedRecipe.ingredients && selectedRecipe.ingredients.length > 0 && (
+                          <div>
+                            <h3 className="font-bold mb-2">Ingredients</h3>
+                            <ul className="text-sm space-y-1">
+                              {selectedRecipe.ingredients.map((ing, i) => <li key={i}>• {ing}</li>)}
+                            </ul>
+                          </div>
+                        )}
+                        {selectedRecipe.instructions && (
+                          <div>
+                            <h3 className="font-bold mb-2">Instructions</h3>
+                            <p className="text-sm text-gray-700">{selectedRecipe.instructions}</p>
+                          </div>
+                        )}
+                        {selectedRecipe.reheating && (
+                          <div>
+                            <h3 className="font-bold mb-2">Reheating</h3>
+                            <p className="text-sm text-gray-700">{selectedRecipe.reheating}</p>
+                          </div>
+                        )}
+                        {selectedRecipe.link && <a href={selectedRecipe.link} target="_blank" className="inline-block gradient-bg text-white px-4 py-2 rounded-lg text-sm">View Original Recipe</a>}
+                      </div>
                     </div>
                   </div>
-
-                  <div className="flex gap-2">
-                    <button type="submit" className="flex-1 gradient-bg text-white py-2 rounded-lg">Save Chore</button>
-                    <button type="button" onClick={onCancel} className="flex-1 bg-gray-200 py-2 rounded-lg">Cancel</button>
-                  </div>
-                </form>
+                )}
               </div>
             </div>
           );
