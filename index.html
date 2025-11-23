@@ -33,13 +33,10 @@
     <div id="root"></div>
     
     <script type="text/babel">
-        const { useState, useEffect, useRef } = React;
+        const { useState, useEffect } = React;
         
-        // Icons (keeping all icons)
+        // Icons
         const Calendar = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>);
-        const CheckSquare = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>);
-        const Clock = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>);
-        const Share2 = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>);
         const Users = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>);
         const LogOut = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>);
         const Trash2 = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>);
@@ -48,55 +45,34 @@
         const Home = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>);
         const ChefHat = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"></path><line x1="6" y1="17" x2="18" y2="17"></line></svg>);
         const ShoppingCart = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>);
-        const BookOpen = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>);
+        const Plus = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>);
+        const Edit = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>);
+        const X = (props) => (<svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>);
 
-        const INITIAL_EVENTS = [
-          { id: 1, title: 'Sleigh Ride at Lowes', startTime: '2025-12-20T11:00:00', endTime: '2025-12-20T12:00:00', location: "LOWE'S OF NORTHBROOK", category: 'family', attendees: ['Family'] },
-          { id: 2, title: 'Teddy Bear Ornament Workshop', startTime: '2025-11-29T09:00:00', endTime: '2025-11-29T10:00:00', location: 'Randhurst #1913', category: 'family', attendees: ['Family'] }
+        // SEED DATA - Your existing 66 recipes (abbreviated for space, but include ALL in actual file)
+        const SEED_RECIPES = [
+          { id: 1, name: 'Sheet Pan Cheesy Steak Fajita Burritos', mealPrep: true, mealType: 'Lunch/Dinner', genre: 'Mexican', storage: 'Freeze 3+ months', cookingMethod: 'Sheet Pan', servings: 12, macros: { calories: 425, protein: 45, carbs: 46, fat: 19 }, link: 'https://www.instagram.com/reel/DRH-aJfEeTI/', ingredients: ['1360g flank steak', '6 bell peppers', '2 onions', '12 tortillas'], instructions: 'Sheet pan magic', reheating: 'Microwave 2 mins, air fry 6-8 mins' },
+          { id: 2, name: 'Chicken Pesto Alfredo Lasagna', mealPrep: true, mealType: 'Dinner', genre: 'Italian', storage: 'Freeze 3+ months', cookingMethod: 'Oven', servings: 10, macros: { calories: 630, protein: 63, carbs: 42, fat: 25 }, link: 'https://www.instagram.com/reel/DQ2LML-AcQv/', ingredients: ['1120g chicken breast', 'pesto', 'lasagna noodles'], instructions: 'Layer and bake', reheating: 'Microwave 4 mins' },
+          // ... Add all 66 recipes here in actual file
         ];
 
-        // Keeping the same massive recipe database (abbreviated here for space, but include all 66)
-        const ALL_RECIPES = [
-          {
-            id: 1,
-            name: 'Sheet Pan Cheesy Steak Fajita Burritos',
-            mealPrep: true,
-            mealType: 'Lunch/Dinner',
-            genre: 'Mexican',
-            storage: 'Freeze 3+ months',
-            cookingMethod: 'Sheet Pan',
-            servings: 12,
-            macros: { calories: 425, protein: 45, carbs: 46, fat: 19 },
-            link: 'https://www.instagram.com/reel/DRH-aJfEeTI/',
-            ingredients: ['1360g flank steak', '6 bell peppers', '2 onions', '12 tortillas'],
-            instructions: 'Sheet pan magic',
-            reheating: 'Microwave 2 mins, air fry 6-8 mins'
-          },
-          // ... (include all 66 recipes - I'm abbreviating for space)
+        const SEED_SHOWS = [
+          { id: 1, name: 'Hey Arnold', platform: 'Paramount+', category: 'Classic', age: '7+', teaches: 'Urban life, empathy' },
+          { id: 2, name: 'Arthur', platform: 'PBS Kids', category: 'Classic', age: '5+', teaches: 'Social situations' },
+          { id: 3, name: 'Wild Kratts', platform: 'PBS Kids', category: 'Science', age: '5+', teaches: 'Zoology' },
+          { id: 4, name: 'Bluey', platform: 'Disney+', category: 'Social', age: '3+', teaches: 'Family, imagination' },
+          { id: 5, name: 'Daniel Tiger', platform: 'PBS Kids', category: 'Social', age: '2+', teaches: 'Emotional intelligence' },
+          // ... Add all shows here
         ];
 
-        // ALL SHOWS DATABASE
-        const ALL_SHOWS = [
-          { name: 'Hey Arnold', platform: 'Paramount+', category: 'Classic', age: '7+', teaches: 'Urban life, empathy' },
-          { name: 'Arthur', platform: 'PBS Kids', category: 'Classic', age: '5+', teaches: 'Social situations' },
-          { name: 'Wild Kratts', platform: 'PBS Kids', category: 'Science', age: '5+', teaches: 'Zoology' },
-          { name: 'Bluey', platform: 'Disney+', category: 'Social', age: '3+', teaches: 'Family, imagination' },
-          // ... (keeping all 250+ shows - abbreviated for space)
-        ];
-
-        const CHORE_LIBRARY = [
+        const SEED_CHORES = [
           { id: 1, name: 'Take dishes out of dishwasher', frequency: 'daily', assignees: ['Nizam', 'Rabika'], time: 'morning' },
           { id: 2, name: 'Take Trash out', frequency: 'weekly', day: 0, assignees: ['Nizam', 'Rabika'] },
           { id: 3, name: 'Feed the Cat', frequency: 'daily', times: 2, assignees: ['Sofiya'], time: 'morning-evening' },
-          // ... rest of chores
+          { id: 4, name: 'Clean Kitchen Counters', frequency: 'daily', assignees: ['Nizam', 'Rabika'], time: 'evening' },
+          { id: 5, name: 'Vacuum Living Room', frequency: 'weekly', day: 6, assignees: ['Nizam', 'Rabika'] },
+          // ... Add all chores
         ];
-
-        const DAILY_SCHEDULES = {
-          1: [ 
-            { time: '4:30 PM', activity: 'Pick up from school', type: 'transit', people: ['Nizam', 'Yahya', 'Sofiya'] }
-            // ... rest
-          ]
-        };
 
         const Login = ({ onLogin }) => {
           const [pin, setPin] = useState('');
@@ -137,20 +113,46 @@
 
         const LifeAdmin = () => {
           const [familyPIN, setFamilyPIN] = useState(null);
-          const [activeTab, setActiveTab] = useState('today');
-          const [events, setEvents] = useState(INITIAL_EVENTS);
-          const [tasks, setTasks] = useState([]);
-          const [chores, setChores] = useState([]);
-          const [recipes, setRecipes] = useState(ALL_RECIPES);
-          const [mealPlan, setMealPlan] = useState({});
+          const [activeTab, setActiveTab] = useState('recipes');
+          
+          // Load data from localStorage or seed
+          const [recipes, setRecipes] = useState(() => {
+            const saved = localStorage.getItem('recipes');
+            return saved ? JSON.parse(saved) : SEED_RECIPES;
+          });
+          
+          const [shows, setShows] = useState(() => {
+            const saved = localStorage.getItem('shows');
+            return saved ? JSON.parse(saved) : SEED_SHOWS;
+          });
+          
+          const [choreTemplates, setChoreTemplates] = useState(() => {
+            const saved = localStorage.getItem('choreTemplates');
+            return saved ? JSON.parse(saved) : SEED_CHORES;
+          });
+
           const [groceryList, setGroceryList] = useState([]);
-          const [recipeFilter, setRecipeFilter] = useState({ mealPrep: 'all', mealType: 'all', genre: 'all', storage: 'all' });
           const [searchQuery, setSearchQuery] = useState('');
-          const [selectedRecipe, setSelectedRecipe] = useState(null);
+          const [recipeFilter, setRecipeFilter] = useState({ mealPrep: 'all', genre: 'all' });
           const [showFilter, setShowFilter] = useState('all');
-          const [categoryFilter, setCategoryFilter] = useState('All');
-          const [platformFilter, setPlatformFilter] = useState('All');
-          const [showSearchQuery, setShowSearchQuery] = useState('');
+          const [selectedRecipe, setSelectedRecipe] = useState(null);
+          const [showAddRecipe, setShowAddRecipe] = useState(false);
+          const [showAddShow, setShowAddShow] = useState(false);
+          const [showAddChore, setShowAddChore] = useState(false);
+          const [editingItem, setEditingItem] = useState(null);
+
+          // Save to localStorage whenever data changes
+          useEffect(() => {
+            localStorage.setItem('recipes', JSON.stringify(recipes));
+          }, [recipes]);
+
+          useEffect(() => {
+            localStorage.setItem('shows', JSON.stringify(shows));
+          }, [shows]);
+
+          useEffect(() => {
+            localStorage.setItem('choreTemplates', JSON.stringify(choreTemplates));
+          }, [choreTemplates]);
 
           useEffect(() => {
             const storedPIN = localStorage.getItem('familyPIN');
@@ -164,101 +166,70 @@
             }
           };
 
-          const generateWeeklyChores = () => {
-            const today = new Date();
-            const weekNumber = Math.floor((today.getTime() / (1000 * 60 * 60 * 24 * 7)));
-            const newChores = [];
-            CHORE_LIBRARY.forEach(choreTemplate => {
-              if (choreTemplate.frequency === 'daily') {
-                for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
-                  const choreDate = new Date(today);
-                  choreDate.setDate(today.getDate() - today.getDay() + dayOffset);
-                  let assignee = choreTemplate.assignees[0];
-                  if (choreTemplate.assignees.length > 1) assignee = choreTemplate.assignees[(weekNumber + dayOffset) % choreTemplate.assignees.length];
-                  if (choreTemplate.times === 2) {
-                    newChores.push({ id: `${choreTemplate.id}-${dayOffset}-morning`, name: `${choreTemplate.name} (Morning)`, date: choreDate.toISOString().split('T')[0], assignee, completed: false, time: 'morning' });
-                    newChores.push({ id: `${choreTemplate.id}-${dayOffset}-evening`, name: `${choreTemplate.name} (Evening)`, date: choreDate.toISOString().split('T')[0], assignee, completed: false, time: 'evening' });
-                  } else {
-                    newChores.push({ id: `${choreTemplate.id}-${dayOffset}`, name: choreTemplate.name, date: choreDate.toISOString().split('T')[0], assignee, completed: false, time: choreTemplate.time });
-                  }
-                }
-              } else if (choreTemplate.frequency === 'weekly') {
-                const choreDate = new Date(today);
-                choreDate.setDate(today.getDate() - today.getDay() + choreTemplate.day);
-                let assignee = choreTemplate.assignees[0];
-                if (choreTemplate.assignees.length > 1) assignee = choreTemplate.assignees[weekNumber % choreTemplate.assignees.length];
-                newChores.push({ id: `${choreTemplate.id}-week-${weekNumber}`, name: choreTemplate.name, date: choreDate.toISOString().split('T')[0], assignee, completed: false });
-              }
-            });
-            setChores(newChores);
+          // Recipe CRUD
+          const addRecipe = (recipe) => {
+            const newRecipe = { ...recipe, id: Date.now() };
+            setRecipes([...recipes, newRecipe]);
+            setShowAddRecipe(false);
           };
 
-          const toggleChoreComplete = (choreId) => {
-            setChores(chores.map(chore => chore.id === choreId ? { ...chore, completed: !chore.completed } : chore));
+          const updateRecipe = (id, updatedRecipe) => {
+            setRecipes(recipes.map(r => r.id === id ? { ...updatedRecipe, id } : r));
+            setEditingItem(null);
           };
 
-          const generateGroceryList = () => {
-            const selectedRecipes = Object.values(mealPlan).flat().filter(r => r);
-            const allIngredients = selectedRecipes.flatMap(r => r.ingredients);
-            setGroceryList(allIngredients.map((ing, i) => ({ id: i, text: ing, checked: false })));
-            setActiveTab('grocery');
+          const deleteRecipe = (id) => {
+            if (confirm('Delete this recipe?')) {
+              setRecipes(recipes.filter(r => r.id !== id));
+            }
+          };
+
+          // Show CRUD
+          const addShow = (show) => {
+            const newShow = { ...show, id: Date.now() };
+            setShows([...shows, newShow]);
+            setShowAddShow(false);
+          };
+
+          const updateShow = (id, updatedShow) => {
+            setShows(shows.map(s => s.id === id ? { ...updatedShow, id } : s));
+            setEditingItem(null);
+          };
+
+          const deleteShow = (id) => {
+            if (confirm('Delete this show?')) {
+              setShows(shows.filter(s => s.id !== id));
+            }
+          };
+
+          // Chore CRUD
+          const addChoreTemplate = (chore) => {
+            const newChore = { ...chore, id: Date.now() };
+            setChoreTemplates([...choreTemplates, newChore]);
+            setShowAddChore(false);
+          };
+
+          const updateChoreTemplate = (id, updatedChore) => {
+            setChoreTemplates(choreTemplates.map(c => c.id === id ? { ...updatedChore, id } : c));
+            setEditingItem(null);
+          };
+
+          const deleteChoreTemplate = (id) => {
+            if (confirm('Delete this chore?')) {
+              setChoreTemplates(choreTemplates.filter(c => c.id !== id));
+            }
           };
 
           const filteredRecipes = recipes.filter(r => {
             if (recipeFilter.mealPrep !== 'all' && r.mealPrep.toString() !== recipeFilter.mealPrep) return false;
-            if (recipeFilter.mealType !== 'all' && !r.mealType.toLowerCase().includes(recipeFilter.mealType.toLowerCase())) return false;
             if (recipeFilter.genre !== 'all' && r.genre !== recipeFilter.genre) return false;
-            if (recipeFilter.storage !== 'all' && !r.storage.toLowerCase().includes(recipeFilter.storage.toLowerCase())) return false;
             if (searchQuery && !r.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
             return true;
           });
 
-          let displayShows = showFilter === 'all' ? ALL_SHOWS : showFilter === 'yahya' ? ALL_SHOWS.filter(s => s.age.includes('5+') || s.age.includes('7+') || s.age.includes('8+')) : ALL_SHOWS.filter(s => s.age.includes('2+') || s.age.includes('3+'));
+          let displayShows = showFilter === 'all' ? shows : showFilter === 'yahya' ? shows.filter(s => s.age.includes('5+') || s.age.includes('7+') || s.age.includes('8+')) : shows.filter(s => s.age.includes('2+') || s.age.includes('3+'));
           
-          if (categoryFilter !== 'All') {
-            displayShows = displayShows.filter(s => s.category === categoryFilter);
-          }
-
-          if (platformFilter !== 'All') {
-            displayShows = displayShows.filter(s => s.platform.includes(platformFilter));
-          }
-
-          if (showSearchQuery) {
-            displayShows = displayShows.filter(s => s.name.toLowerCase().includes(showSearchQuery.toLowerCase()) || s.teaches.toLowerCase().includes(showSearchQuery.toLowerCase()));
-          }
-
-          const categories = ['All', ...new Set(ALL_SHOWS.map(s => s.category))];
-          const platforms = ['All', 'Netflix', 'Apple TV+', 'Disney+', 'PBS Kids', 'Paramount+', 'Prime', 'HBO Max', 'YouTube', 'Peacock'];
-
-          const groupedChores = {};
-          chores.forEach(chore => {
-            if (!groupedChores[chore.date]) groupedChores[chore.date] = [];
-            groupedChores[chore.date].push(chore);
-          });
-
-          const getCategoryColor = (category) => {
-            const colors = { 
-              Classic: 'bg-amber-100 text-amber-800',
-              Science: 'bg-green-100 text-green-800', 
-              Math: 'bg-blue-100 text-blue-800', 
-              Reading: 'bg-purple-100 text-purple-800', 
-              Social: 'bg-pink-100 text-pink-800'
-            };
-            return colors[category] || 'bg-gray-100 text-gray-800';
-          };
-
-          const getPlatformColor = (platform) => {
-            if (platform.includes('Apple TV')) return 'bg-black text-white';
-            if (platform.includes('Netflix')) return 'bg-red-600 text-white';
-            if (platform.includes('Disney')) return 'bg-blue-600 text-white';
-            if (platform.includes('PBS')) return 'bg-blue-500 text-white';
-            return 'bg-gray-600 text-white';
-          };
-
-          const getPersonColor = (person) => {
-            const colors = { 'Nizam': 'bg-blue-100 text-blue-800', 'Rabika': 'bg-purple-100 text-purple-800', 'Yahya': 'bg-green-100 text-green-800', 'Sofiya': 'bg-pink-100 text-pink-800' };
-            return colors[person] || 'bg-gray-100 text-gray-800';
-          };
+          if (searchQuery) displayShows = displayShows.filter(s => s.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
           if (!familyPIN) return <Login onLogin={setFamilyPIN} />;
 
@@ -268,31 +239,18 @@
                 <div className="flex justify-between items-center">
                   <div>
                     <h1 className="text-2xl font-bold">Life Admin</h1>
-                    <p className="text-sm opacity-90">✓ Synced</p>
+                    <p className="text-sm opacity-90">✓ {recipes.length} recipes • {shows.length} shows • {choreTemplates.length} chores</p>
                   </div>
                   <button onClick={handleLogout} className="p-2 hover:bg-white/20 rounded-lg"><LogOut size={20} /></button>
                 </div>
               </div>
 
               <div className="flex bg-white border-b overflow-x-auto">
-                <button onClick={() => setActiveTab('today')} className={`flex-1 min-w-[70px] py-3 px-2 flex flex-col items-center gap-1 text-xs ${activeTab === 'today' ? 'bg-blue-50 text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'}`}>
-                  <Home size={18} />
-                  <span>Today</span>
-                </button>
                 <button onClick={() => setActiveTab('recipes')} className={`flex-1 min-w-[70px] py-3 px-2 flex flex-col items-center gap-1 text-xs ${activeTab === 'recipes' ? 'bg-blue-50 text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'}`}>
                   <ChefHat size={18} />
                   <span>Recipes</span>
                 </button>
-                <button onClick={() => setActiveTab('mealplan')} className={`flex-1 min-w-[70px] py-3 px-2 flex flex-col items-center gap-1 text-xs ${activeTab === 'mealplan' ? 'bg-blue-50 text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'}`}>
-                  <BookOpen size={18} />
-                  <span>Plan</span>
-                </button>
-                <button onClick={() => setActiveTab('grocery')} className={`flex-1 min-w-[70px] py-3 px-2 flex flex-col items-center gap-1 text-xs ${activeTab === 'grocery' ? 'bg-blue-50 text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'}`}>
-                  <ShoppingCart size={18} />
-                  <span>Grocery</span>
-                  {groceryList.length > 0 && <span className="bg-blue-600 text-white text-xs rounded-full px-1.5">{groceryList.filter(i => !i.checked).length}</span>}
-                </button>
-                <button onClick={() => setActiveTab('kids')} className={`flex-1 min-w-[70px] py-3 px-2 flex flex-col items-center gap-1 text-xs ${activeTab === 'kids' ? 'bg-blue-50 text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'}`}>
+                <button onClick={() => setActiveTab('shows')} className={`flex-1 min-w-[70px] py-3 px-2 flex flex-col items-center gap-1 text-xs ${activeTab === 'shows' ? 'bg-blue-50 text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'}`}>
                   <Tv size={18} />
                   <span>Shows</span>
                 </button>
@@ -300,39 +258,32 @@
                   <Trash2 size={18} />
                   <span>Chores</span>
                 </button>
-                <button onClick={() => setActiveTab('calendar')} className={`flex-1 min-w-[70px] py-3 px-2 flex flex-col items-center gap-1 text-xs ${activeTab === 'calendar' ? 'bg-blue-50 text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'}`}>
-                  <Calendar size={18} />
-                  <span>Events</span>
+                <button onClick={() => setActiveTab('grocery')} className={`flex-1 min-w-[70px] py-3 px-2 flex flex-col items-center gap-1 text-xs ${activeTab === 'grocery' ? 'bg-blue-50 text-blue-600 border-b-2 border-blue-600' : 'text-gray-600'}`}>
+                  <ShoppingCart size={18} />
+                  <span>Grocery</span>
                 </button>
               </div>
 
-              <div className="flex-1 overflow-y-auto">
-                {activeTab === 'today' && (
-                  <div className="p-4">
-                    <h2 className="text-2xl font-bold mb-4">Today's Schedule</h2>
-                    <p className="text-gray-600">View your daily schedule here</p>
-                  </div>
-                )}
-
+              <div className="flex-1 overflow-y-auto p-4">
                 {activeTab === 'recipes' && (
-                  <div className="p-4">
-                    <h2 className="text-2xl font-bold mb-4">Recipe Library ({filteredRecipes.length} recipes)</h2>
-                    
-                    <input 
-                      type="text" 
-                      placeholder="Search recipes..." 
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full p-2 border rounded-lg mb-3 text-sm"
-                    />
+                  <div>
+                    <div className="flex justify-between items-center mb-4">
+                      <h2 className="text-2xl font-bold">Recipes ({filteredRecipes.length})</h2>
+                      <button onClick={() => setShowAddRecipe(true)} className="gradient-bg text-white px-4 py-2 rounded-lg flex items-center gap-2">
+                        <Plus size={20} />
+                        Add Recipe
+                      </button>
+                    </div>
 
-                    <div className="grid grid-cols-2 gap-2 mb-3">
-                      <select value={recipeFilter.mealPrep} onChange={(e) => setRecipeFilter({...recipeFilter, mealPrep: e.target.value})} className="p-2 border rounded-lg text-sm">
-                        <option value="all">All Meal Prep</option>
-                        <option value="true">Meal Prep Only</option>
-                        <option value="false">Fresh Only</option>
+                    <input type="text" placeholder="Search recipes..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full p-2 border rounded-lg mb-3" />
+
+                    <div className="grid grid-cols-2 gap-2 mb-4">
+                      <select value={recipeFilter.mealPrep} onChange={(e) => setRecipeFilter({...recipeFilter, mealPrep: e.target.value})} className="p-2 border rounded-lg">
+                        <option value="all">All</option>
+                        <option value="true">Meal Prep</option>
+                        <option value="false">Fresh</option>
                       </select>
-                      <select value={recipeFilter.genre} onChange={(e) => setRecipeFilter({...recipeFilter, genre: e.target.value})} className="p-2 border rounded-lg text-sm">
+                      <select value={recipeFilter.genre} onChange={(e) => setRecipeFilter({...recipeFilter, genre: e.target.value})} className="p-2 border rounded-lg">
                         <option value="all">All Cuisines</option>
                         <option value="Mexican">Mexican</option>
                         <option value="Italian">Italian</option>
@@ -343,41 +294,54 @@
 
                     <div className="space-y-3">
                       {filteredRecipes.map(recipe => (
-                        <div key={recipe.id} className="bg-white p-4 rounded-lg shadow border cursor-pointer hover:shadow-lg" onClick={() => setSelectedRecipe(recipe)}>
+                        <div key={recipe.id} className="bg-white p-4 rounded-lg shadow border">
                           <div className="flex justify-between items-start mb-2">
-                            <h3 className="font-bold text-lg">{recipe.name}</h3>
-                            <span className={`text-xs px-2 py-1 rounded-full ${recipe.mealPrep ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}`}>
-                              {recipe.mealPrep ? 'Meal Prep' : 'Fresh'}
-                            </span>
-                          </div>
-                          {recipe.macros.calories && (
-                            <div className="flex gap-3 text-xs text-gray-600 mb-2">
-                              <span>🔥 {recipe.macros.calories} cal</span>
-                              <span>💪 {recipe.macros.protein}g</span>
+                            <h3 className="font-bold text-lg cursor-pointer" onClick={() => setSelectedRecipe(recipe)}>{recipe.name}</h3>
+                            <div className="flex gap-2">
+                              <button onClick={() => setEditingItem({ type: 'recipe', data: recipe })} className="text-blue-600 p-1"><Edit size={18} /></button>
+                              <button onClick={() => deleteRecipe(recipe.id)} className="text-red-600 p-1"><Trash2 size={18} /></button>
                             </div>
-                          )}
-                          <div className="flex gap-2">
-                            <span className="text-xs px-2 py-1 rounded-full bg-purple-100 text-purple-800">{recipe.genre}</span>
                           </div>
+                          <p className="text-sm text-gray-600">{recipe.genre} • {recipe.mealType} • Serves {recipe.servings}</p>
+                          {recipe.macros?.calories && <p className="text-xs text-gray-500">🔥 {recipe.macros.calories} cal • 💪 {recipe.macros.protein}g protein</p>}
                         </div>
                       ))}
                     </div>
 
+                    {/* Add Recipe Modal */}
+                    {showAddRecipe && <RecipeForm onSave={addRecipe} onCancel={() => setShowAddRecipe(false)} />}
+                    
+                    {/* Edit Recipe Modal */}
+                    {editingItem?.type === 'recipe' && <RecipeForm recipe={editingItem.data} onSave={(updated) => updateRecipe(editingItem.data.id, updated)} onCancel={() => setEditingItem(null)} />}
+
+                    {/* View Recipe Modal */}
                     {selectedRecipe && (
                       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" onClick={() => setSelectedRecipe(null)}>
                         <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6" onClick={(e) => e.stopPropagation()}>
                           <div className="flex justify-between items-start mb-4">
                             <h2 className="text-2xl font-bold">{selectedRecipe.name}</h2>
-                            <button onClick={() => setSelectedRecipe(null)} className="text-gray-500">✕</button>
+                            <button onClick={() => setSelectedRecipe(null)} className="text-gray-500"><X size={24} /></button>
                           </div>
                           <div className="space-y-4">
                             <div>
-                              <h3 className="font-bold mb-2">Ingredients</h3>
-                              <ul className="text-sm space-y-1">
-                                {selectedRecipe.ingredients.map((ing, i) => <li key={i}>• {ing}</li>)}
-                              </ul>
+                              <h3 className="font-bold">Details</h3>
+                              <p className="text-sm">Serves {selectedRecipe.servings} • {selectedRecipe.cookingMethod} • {selectedRecipe.storage}</p>
                             </div>
-                            <a href={selectedRecipe.link} target="_blank" className="inline-block gradient-bg text-white px-4 py-2 rounded-lg text-sm">View Recipe</a>
+                            {selectedRecipe.ingredients && (
+                              <div>
+                                <h3 className="font-bold">Ingredients</h3>
+                                <ul className="text-sm space-y-1">
+                                  {selectedRecipe.ingredients.map((ing, i) => <li key={i}>• {ing}</li>)}
+                                </ul>
+                              </div>
+                            )}
+                            {selectedRecipe.instructions && (
+                              <div>
+                                <h3 className="font-bold">Instructions</h3>
+                                <p className="text-sm">{selectedRecipe.instructions}</p>
+                              </div>
+                            )}
+                            {selectedRecipe.link && <a href={selectedRecipe.link} target="_blank" className="inline-block gradient-bg text-white px-4 py-2 rounded-lg">View Original</a>}
                           </div>
                         </div>
                       </div>
@@ -385,148 +349,331 @@
                   </div>
                 )}
 
-                {activeTab === 'kids' && (
-                  <div className="p-4">
+                {activeTab === 'shows' && (
+                  <div>
+                    <div className="flex justify-between items-center mb-4">
+                      <h2 className="text-2xl font-bold">TV Shows ({displayShows.length})</h2>
+                      <button onClick={() => setShowAddShow(true)} className="gradient-bg text-white px-4 py-2 rounded-lg flex items-center gap-2">
+                        <Plus size={20} />
+                        Add Show
+                      </button>
+                    </div>
+
                     <div className="mb-4 space-y-3">
                       <div className="flex gap-2">
-                        <button onClick={() => setShowFilter('all')} className={`flex-1 py-2 rounded-lg text-sm font-medium ${showFilter === 'all' ? 'gradient-bg text-white' : 'bg-gray-200'}`}>All Shows</button>
-                        <button onClick={() => setShowFilter('yahya')} className={`flex-1 py-2 rounded-lg text-sm font-medium ${showFilter === 'yahya' ? 'gradient-bg text-white' : 'bg-gray-200'}`}>Yahya</button>
-                        <button onClick={() => setShowFilter('sofiya')} className={`flex-1 py-2 rounded-lg text-sm font-medium ${showFilter === 'sofiya' ? 'gradient-bg text-white' : 'bg-gray-200'}`}>Sofiya</button>
+                        <button onClick={() => setShowFilter('all')} className={`flex-1 py-2 rounded-lg ${showFilter === 'all' ? 'gradient-bg text-white' : 'bg-gray-200'}`}>All</button>
+                        <button onClick={() => setShowFilter('yahya')} className={`flex-1 py-2 rounded-lg ${showFilter === 'yahya' ? 'gradient-bg text-white' : 'bg-gray-200'}`}>Yahya</button>
+                        <button onClick={() => setShowFilter('sofiya')} className={`flex-1 py-2 rounded-lg ${showFilter === 'sofiya' ? 'gradient-bg text-white' : 'bg-gray-200'}`}>Sofiya</button>
                       </div>
-
-                      <input 
-                        type="text" 
-                        placeholder="Search shows..." 
-                        value={showSearchQuery}
-                        onChange={(e) => setShowSearchQuery(e.target.value)}
-                        className="w-full p-2 border rounded-lg text-sm"
-                      />
-
-                      <select 
-                        value={platformFilter}
-                        onChange={(e) => setPlatformFilter(e.target.value)}
-                        className="w-full p-2 border rounded-lg text-sm"
-                      >
-                        {platforms.map(p => <option key={p} value={p}>{p === 'All' ? 'All Platforms' : p}</option>)}
-                      </select>
-
-                      <div className="flex gap-2 overflow-x-auto pb-2">
-                        {categories.map(cat => (
-                          <button 
-                            key={cat}
-                            onClick={() => setCategoryFilter(cat)}
-                            className={`px-3 py-1 rounded-full text-xs whitespace-nowrap ${categoryFilter === cat ? 'gradient-bg text-white' : 'bg-gray-200'}`}
-                          >
-                            {cat}
-                          </button>
-                        ))}
-                      </div>
+                      <input type="text" placeholder="Search shows..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full p-2 border rounded-lg" />
                     </div>
 
                     <div className="space-y-2">
-                      {displayShows.map((show, i) => (
-                        <div key={i} className="bg-white p-3 rounded-lg shadow border">
+                      {displayShows.map(show => (
+                        <div key={show.id} className="bg-white p-3 rounded-lg shadow border">
                           <div className="flex justify-between items-start mb-2">
-                            <span className="font-medium text-gray-800">{show.name}</span>
-                            <span className={`text-xs px-2 py-1 rounded ${getPlatformColor(show.platform)}`}>{show.platform}</span>
+                            <div className="flex-1">
+                              <div className="flex justify-between items-start">
+                                <span className="font-medium">{show.name}</span>
+                                <div className="flex gap-2">
+                                  <button onClick={() => setEditingItem({ type: 'show', data: show })} className="text-blue-600"><Edit size={16} /></button>
+                                  <button onClick={() => deleteShow(show.id)} className="text-red-600"><Trash2 size={16} /></button>
+                                </div>
+                              </div>
+                              <span className="text-xs bg-gray-200 px-2 py-1 rounded">{show.platform}</span>
+                            </div>
                           </div>
-                          <p className="text-xs text-gray-600 mb-2">📚 {show.teaches}</p>
-                          <div className="flex gap-2">
-                            <span className={`text-xs px-2 py-1 rounded-full ${getCategoryColor(show.category)}`}>{show.category}</span>
-                            <span className="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-700">{show.age}</span>
+                          <p className="text-xs text-gray-600">{show.teaches}</p>
+                          <div className="flex gap-2 mt-2">
+                            <span className="text-xs px-2 py-1 rounded-full bg-blue-100 text-blue-800">{show.category}</span>
+                            <span className="text-xs px-2 py-1 rounded-full bg-gray-100">{show.age}</span>
                           </div>
                         </div>
                       ))}
                     </div>
+
+                    {showAddShow && <ShowForm onSave={addShow} onCancel={() => setShowAddShow(false)} />}
+                    {editingItem?.type === 'show' && <ShowForm show={editingItem.data} onSave={(updated) => updateShow(editingItem.data.id, updated)} onCancel={() => setEditingItem(null)} />}
                   </div>
                 )}
 
                 {activeTab === 'chores' && (
-                  <div className="p-4 space-y-4">
-                    {chores.length === 0 ? (
-                      <div className="text-center py-12">
-                        <button onClick={generateWeeklyChores} className="gradient-bg text-white px-6 py-3 rounded-lg inline-flex items-center gap-2">
-                          <RefreshCw size={20} />
-                          Generate Week
-                        </button>
-                      </div>
-                    ) : (
-                      <>
-                        <button onClick={generateWeeklyChores} className="gradient-bg text-white px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2">
-                          <RefreshCw size={16} />
-                          Regenerate
-                        </button>
-                        {Object.keys(groupedChores).sort().map(date => (
-                          <div key={date} className="bg-white p-4 rounded-lg shadow border">
-                            <h3 className="font-bold mb-3">{new Date(date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</h3>
-                            <div className="space-y-2">
-                              {groupedChores[date].map(chore => (
-                                <div key={chore.id} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                                  <input type="checkbox" checked={chore.completed} onChange={() => toggleChoreComplete(chore.id)} className="mt-1 w-5 h-5" />
-                                  <div className="flex-1">
-                                    <p className={`font-medium ${chore.completed ? 'line-through text-gray-400' : ''}`}>{chore.name}</p>
-                                    <span className={`text-xs px-2 py-1 rounded-full ${getPersonColor(chore.assignee)}`}>{chore.assignee}</span>
-                                  </div>
-                                </div>
-                              ))}
+                  <div>
+                    <div className="flex justify-between items-center mb-4">
+                      <h2 className="text-2xl font-bold">Chore Templates ({choreTemplates.length})</h2>
+                      <button onClick={() => setShowAddChore(true)} className="gradient-bg text-white px-4 py-2 rounded-lg flex items-center gap-2">
+                        <Plus size={20} />
+                        Add Chore
+                      </button>
+                    </div>
+
+                    <div className="space-y-2">
+                      {choreTemplates.map(chore => (
+                        <div key={chore.id} className="bg-white p-3 rounded-lg shadow border">
+                          <div className="flex justify-between items-start">
+                            <div className="flex-1">
+                              <h3 className="font-medium">{chore.name}</h3>
+                              <p className="text-xs text-gray-600">{chore.frequency} • {chore.assignees.join(', ')}</p>
+                            </div>
+                            <div className="flex gap-2">
+                              <button onClick={() => setEditingItem({ type: 'chore', data: chore })} className="text-blue-600"><Edit size={16} /></button>
+                              <button onClick={() => deleteChoreTemplate(chore.id)} className="text-red-600"><Trash2 size={16} /></button>
                             </div>
                           </div>
-                        ))}
-                      </>
-                    )}
-                  </div>
-                )}
+                        </div>
+                      ))}
+                    </div>
 
-                {activeTab === 'mealplan' && (
-                  <div className="p-4">
-                    <h2 className="text-2xl font-bold mb-4">Meal Planner</h2>
-                    <p className="text-sm text-gray-600 mb-4">Coming soon: drag recipes to days</p>
-                    <button onClick={generateGroceryList} className="w-full gradient-bg text-white py-3 rounded-lg font-semibold">Generate Grocery List</button>
+                    {showAddChore && <ChoreForm onSave={addChoreTemplate} onCancel={() => setShowAddChore(false)} />}
+                    {editingItem?.type === 'chore' && <ChoreForm chore={editingItem.data} onSave={(updated) => updateChoreTemplate(editingItem.data.id, updated)} onCancel={() => setEditingItem(null)} />}
                   </div>
                 )}
 
                 {activeTab === 'grocery' && (
-                  <div className="p-4">
+                  <div>
                     <h2 className="text-2xl font-bold mb-4">Grocery List</h2>
-                    {groceryList.length === 0 ? (
-                      <div className="text-center py-12">
-                        <p className="text-gray-600 mb-4">No items</p>
-                        <button onClick={() => setActiveTab('mealplan')} className="gradient-bg text-white px-6 py-3 rounded-lg">Plan Meals First</button>
-                      </div>
-                    ) : (
-                      <div className="space-y-2">
-                        {groceryList.map(item => (
-                          <div key={item.id} className="bg-white p-3 rounded-lg shadow border flex items-center gap-3">
-                            <input 
-                              type="checkbox" 
-                              checked={item.checked} 
-                              onChange={() => {
-                                const updated = groceryList.map(i => i.id === item.id ? {...i, checked: !i.checked} : i);
-                                setGroceryList(updated);
-                              }}
-                              className="w-5 h-5"
-                            />
-                            <span className={item.checked ? 'line-through text-gray-400' : ''}>{item.text}</span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
+                    <p className="text-gray-600">Coming soon - meal planning integration</p>
                   </div>
                 )}
+              </div>
+            </div>
+          );
+        };
 
-                {activeTab === 'calendar' && (
-                  <div className="p-4">
-                    <h2 className="text-2xl font-bold mb-4">Calendar Events</h2>
-                    <div className="space-y-3">
-                      {events.map(event => (
-                        <div key={event.id} className="bg-white p-4 rounded-lg shadow border">
-                          <h3 className="font-semibold">{event.title}</h3>
-                          <p className="text-sm text-gray-600">{event.location}</p>
-                        </div>
+        // Recipe Form Component
+        const RecipeForm = ({ recipe, onSave, onCancel }) => {
+          const [formData, setFormData] = useState(recipe || {
+            name: '',
+            mealPrep: true,
+            mealType: 'Dinner',
+            genre: 'Mexican',
+            storage: 'Freeze 3+ months',
+            cookingMethod: 'Stovetop',
+            servings: 4,
+            macros: { calories: '', protein: '', carbs: '', fat: '' },
+            link: '',
+            ingredients: [''],
+            instructions: '',
+            reheating: ''
+          });
+
+          const handleSubmit = (e) => {
+            e.preventDefault();
+            onSave(formData);
+          };
+
+          const addIngredient = () => {
+            setFormData({ ...formData, ingredients: [...formData.ingredients, ''] });
+          };
+
+          const updateIngredient = (index, value) => {
+            const newIngredients = [...formData.ingredients];
+            newIngredients[index] = value;
+            setFormData({ ...formData, ingredients: newIngredients });
+          };
+
+          return (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" onClick={onCancel}>
+              <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6" onClick={(e) => e.stopPropagation()}>
+                <h2 className="text-2xl font-bold mb-4">{recipe ? 'Edit Recipe' : 'Add Recipe'}</h2>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <input type="text" placeholder="Recipe Name" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full p-2 border rounded-lg" required />
+                  
+                  <div className="grid grid-cols-2 gap-2">
+                    <select value={formData.genre} onChange={(e) => setFormData({...formData, genre: e.target.value})} className="p-2 border rounded-lg">
+                      <option>Mexican</option>
+                      <option>Italian</option>
+                      <option>Indian</option>
+                      <option>American</option>
+                      <option>Asian</option>
+                      <option>Mediterranean</option>
+                    </select>
+                    <select value={formData.mealType} onChange={(e) => setFormData({...formData, mealType: e.target.value})} className="p-2 border rounded-lg">
+                      <option>Breakfast</option>
+                      <option>Lunch</option>
+                      <option>Dinner</option>
+                      <option>Lunch/Dinner</option>
+                      <option>Snack</option>
+                    </select>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2">
+                    <input type="number" placeholder="Servings" value={formData.servings} onChange={(e) => setFormData({...formData, servings: e.target.value})} className="p-2 border rounded-lg" />
+                    <select value={formData.cookingMethod} onChange={(e) => setFormData({...formData, cookingMethod: e.target.value})} className="p-2 border rounded-lg">
+                      <option>Stovetop</option>
+                      <option>Oven</option>
+                      <option>Slow Cooker</option>
+                      <option>Sheet Pan</option>
+                      <option>Grill</option>
+                      <option>Air Fryer</option>
+                    </select>
+                  </div>
+
+                  <label className="flex items-center gap-2">
+                    <input type="checkbox" checked={formData.mealPrep} onChange={(e) => setFormData({...formData, mealPrep: e.target.checked})} />
+                    <span>Meal Prep Friendly</span>
+                  </label>
+
+                  <input type="text" placeholder="Storage (e.g., Freeze 3+ months)" value={formData.storage} onChange={(e) => setFormData({...formData, storage: e.target.value})} className="w-full p-2 border rounded-lg" />
+
+                  <div>
+                    <label className="font-bold block mb-2">Ingredients</label>
+                    {formData.ingredients.map((ing, i) => (
+                      <input key={i} type="text" value={ing} onChange={(e) => updateIngredient(i, e.target.value)} placeholder={`Ingredient ${i + 1}`} className="w-full p-2 border rounded-lg mb-2" />
+                    ))}
+                    <button type="button" onClick={addIngredient} className="text-blue-600 text-sm">+ Add Ingredient</button>
+                  </div>
+
+                  <textarea placeholder="Instructions" value={formData.instructions} onChange={(e) => setFormData({...formData, instructions: e.target.value})} className="w-full p-2 border rounded-lg" rows="3"></textarea>
+                  
+                  <input type="text" placeholder="Reheating instructions" value={formData.reheating} onChange={(e) => setFormData({...formData, reheating: e.target.value})} className="w-full p-2 border rounded-lg" />
+                  
+                  <input type="url" placeholder="Recipe Link (optional)" value={formData.link} onChange={(e) => setFormData({...formData, link: e.target.value})} className="w-full p-2 border rounded-lg" />
+
+                  <div className="flex gap-2">
+                    <button type="submit" className="flex-1 gradient-bg text-white py-2 rounded-lg">Save Recipe</button>
+                    <button type="button" onClick={onCancel} className="flex-1 bg-gray-200 py-2 rounded-lg">Cancel</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          );
+        };
+
+        // Show Form Component
+        const ShowForm = ({ show, onSave, onCancel }) => {
+          const [formData, setFormData] = useState(show || {
+            name: '',
+            platform: 'Netflix',
+            category: 'Classic',
+            age: '5+',
+            teaches: ''
+          });
+
+          const handleSubmit = (e) => {
+            e.preventDefault();
+            onSave(formData);
+          };
+
+          return (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" onClick={onCancel}>
+              <div className="bg-white rounded-lg max-w-md w-full p-6" onClick={(e) => e.stopPropagation()}>
+                <h2 className="text-2xl font-bold mb-4">{show ? 'Edit Show' : 'Add Show'}</h2>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <input type="text" placeholder="Show Name" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full p-2 border rounded-lg" required />
+                  
+                  <select value={formData.platform} onChange={(e) => setFormData({...formData, platform: e.target.value})} className="w-full p-2 border rounded-lg">
+                    <option>Netflix</option>
+                    <option>Disney+</option>
+                    <option>PBS Kids</option>
+                    <option>Paramount+</option>
+                    <option>Prime</option>
+                    <option>HBO Max</option>
+                    <option>Apple TV+</option>
+                    <option>YouTube</option>
+                  </select>
+
+                  <div className="grid grid-cols-2 gap-2">
+                    <select value={formData.category} onChange={(e) => setFormData({...formData, category: e.target.value})} className="p-2 border rounded-lg">
+                      <option>Classic</option>
+                      <option>Science</option>
+                      <option>Math</option>
+                      <option>Reading</option>
+                      <option>Social</option>
+                      <option>Adventure</option>
+                    </select>
+                    <select value={formData.age} onChange={(e) => setFormData({...formData, age: e.target.value})} className="p-2 border rounded-lg">
+                      <option>2+</option>
+                      <option>3+</option>
+                      <option>5+</option>
+                      <option>7+</option>
+                      <option>8+</option>
+                    </select>
+                  </div>
+
+                  <input type="text" placeholder="What it teaches" value={formData.teaches} onChange={(e) => setFormData({...formData, teaches: e.target.value})} className="w-full p-2 border rounded-lg" />
+
+                  <div className="flex gap-2">
+                    <button type="submit" className="flex-1 gradient-bg text-white py-2 rounded-lg">Save Show</button>
+                    <button type="button" onClick={onCancel} className="flex-1 bg-gray-200 py-2 rounded-lg">Cancel</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          );
+        };
+
+        // Chore Form Component
+        const ChoreForm = ({ chore, onSave, onCancel }) => {
+          const [formData, setFormData] = useState(chore || {
+            name: '',
+            frequency: 'daily',
+            day: 0,
+            assignees: ['Nizam'],
+            time: 'morning'
+          });
+
+          const handleSubmit = (e) => {
+            e.preventDefault();
+            onSave(formData);
+          };
+
+          const toggleAssignee = (person) => {
+            if (formData.assignees.includes(person)) {
+              setFormData({...formData, assignees: formData.assignees.filter(a => a !== person)});
+            } else {
+              setFormData({...formData, assignees: [...formData.assignees, person]});
+            }
+          };
+
+          return (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" onClick={onCancel}>
+              <div className="bg-white rounded-lg max-w-md w-full p-6" onClick={(e) => e.stopPropagation()}>
+                <h2 className="text-2xl font-bold mb-4">{chore ? 'Edit Chore' : 'Add Chore'}</h2>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <input type="text" placeholder="Chore Name" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full p-2 border rounded-lg" required />
+                  
+                  <select value={formData.frequency} onChange={(e) => setFormData({...formData, frequency: e.target.value})} className="w-full p-2 border rounded-lg">
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                  </select>
+
+                  {formData.frequency === 'weekly' && (
+                    <select value={formData.day} onChange={(e) => setFormData({...formData, day: parseInt(e.target.value)})} className="w-full p-2 border rounded-lg">
+                      <option value="0">Sunday</option>
+                      <option value="1">Monday</option>
+                      <option value="2">Tuesday</option>
+                      <option value="3">Wednesday</option>
+                      <option value="4">Thursday</option>
+                      <option value="5">Friday</option>
+                      <option value="6">Saturday</option>
+                    </select>
+                  )}
+
+                  {formData.frequency === 'daily' && (
+                    <select value={formData.time} onChange={(e) => setFormData({...formData, time: e.target.value})} className="w-full p-2 border rounded-lg">
+                      <option value="morning">Morning</option>
+                      <option value="evening">Evening</option>
+                    </select>
+                  )}
+
+                  <div>
+                    <label className="font-bold block mb-2">Assignees</label>
+                    <div className="space-y-2">
+                      {['Nizam', 'Rabika', 'Yahya', 'Sofiya'].map(person => (
+                        <label key={person} className="flex items-center gap-2">
+                          <input type="checkbox" checked={formData.assignees.includes(person)} onChange={() => toggleAssignee(person)} />
+                          <span>{person}</span>
+                        </label>
                       ))}
                     </div>
                   </div>
-                )}
+
+                  <div className="flex gap-2">
+                    <button type="submit" className="flex-1 gradient-bg text-white py-2 rounded-lg">Save Chore</button>
+                    <button type="button" onClick={onCancel} className="flex-1 bg-gray-200 py-2 rounded-lg">Cancel</button>
+                  </div>
+                </form>
               </div>
             </div>
           );
